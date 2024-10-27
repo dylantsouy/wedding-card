@@ -7,7 +7,7 @@ import svgr from 'vite-plugin-svgr'
 export default defineConfig({
   plugins: [react(), 
     svgr({
-      exportAsReactComponent: true, // 確保這個選項啟用
+      exportAsReactComponent: true,
     }),],
   prettier: {
     configFile: './.prettierrc.json',
@@ -15,7 +15,6 @@ export default defineConfig({
   build: {
     assetsDir: 'src/assets',
   },
-  base: '/',
   css: {
     preprocessorOptions: {
       scss: {
