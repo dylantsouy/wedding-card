@@ -121,7 +121,7 @@ function App() {
             }
         };
 
-        const imageUrls = [hug, run, photo1, photo2, photo3, photo4, photo5G, photo5, photo6, photo7, welcome, cloud, about, sheSaid, heSaid, he, she];
+        const imageUrls = [hug, run, photo1, photo2, photo3, photo4, photo5, photo6, photo7, welcome, cloud, about, sheSaid, heSaid, he, she];
 
         const loadImages = () => {
             return Promise.all(

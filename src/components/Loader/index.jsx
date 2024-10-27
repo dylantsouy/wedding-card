@@ -9,7 +9,6 @@ export const Loader = () => {
                 <span className='cssload-square'></span>
             </div>
             <div className='cssload-shadow'></div>
-            
         </div>
     );
 };
