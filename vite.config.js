@@ -12,9 +12,6 @@ export default defineConfig({
   prettier: {
     configFile: './.prettierrc.json',
   },
-  build: {
-    assetsDir: 'src/assets',
-  },
   css: {
     preprocessorOptions: {
       scss: {
