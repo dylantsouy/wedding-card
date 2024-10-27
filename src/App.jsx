@@ -351,7 +351,7 @@ function App() {
                             <br /> filling my heart with joy and sealing our love for eternity.
                             <br />
                             <br />
-                            在這浪漫的時光裡，永不分離
+                            在這浪漫的時光，永不分離
                         </div>
                         <div className='gray-line'>
                             <div></div>

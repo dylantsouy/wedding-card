@@ -13,11 +13,12 @@
 }
 .loading-status {
     font-family: 'Source Han Serif TC', serif;
-    text-align: center;
+    display: flex;
+    justify-content: center;
     opacity: 0.8;
     animation: fadeInOut 1.5s ease-in-out infinite;
     letter-spacing: 0.1em;
-    transform: translateY(80px);
+    transform: translateY(70px);
 
     div {
         margin-top: 1rem;
@@ -48,7 +49,7 @@
     content: '';
     left: 50%;
     top: 50%;
-    transform: translate(-100%, -450%);
+    transform: translate(-100%, -650%);
 
     * {
         font-size: 62px;
