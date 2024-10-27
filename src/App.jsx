@@ -147,18 +147,21 @@ function App() {
             };
     
             const minLoadingTime = new Promise((resolve) => setTimeout(resolve, 2000));
-            const timeoutPromise = new Promise((resolve) => setTimeout(resolve, 6000));
+            const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Loading timed out")), 6000));
     
-            // 先載入字體再載入圖片
-            try {
-                await loadFonts();
-                await Promise.all([loadImages(), minLoadingTime]); // 確保至少 2 秒
-                await Promise.race([Promise.all([loadImages(), minLoadingTime]), timeoutPromise]); // 確保最多6秒
-                setIsLoading(false);
-            } catch (error) {
-                console.error('Loading process error:', error);
-                setIsLoading(false); // 任意錯誤均結束loading
-            }
+            // 用 Promise.race 確保6秒內完成，否則終止
+            Promise.race([
+                (async () => {
+                    await loadFonts();
+                    await Promise.all([loadImages(), minLoadingTime]);
+                })(),
+                timeoutPromise
+            ])
+                .then(() => setIsLoading(false))
+                .catch((error) => {
+                    console.warn(error.message);
+                    setIsLoading(false); // 超過6秒，立即結束loading
+                });
         };
     
         loadResources();
