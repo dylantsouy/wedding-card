@@ -1,0 +1,450 @@
+.container {
+    width: 100%;
+    margin: auto;
+    padding: 0 0 30px;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+
+    @media screen and (min-width: 431px) {
+        max-width: 430px;
+    }
+    .page-1 {
+        .main-photo {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            .marry {
+                position: absolute;
+                bottom: 80px;
+                color: #fff;
+                font-size: 62px;
+            }
+
+            .cloud {
+                position: absolute;
+                opacity: 0;
+                transition: all 1.5s ease-out;
+                z-index: 1;
+
+                img {
+                    width: 100px;
+                }
+
+                &.cloud-right {
+                    top: -20px;
+                    right: -100px;
+                    animation: up-down1 infinite alternate 5s;
+
+                    &.cloud-animate {
+                        right: -20px;
+                        opacity: 1;
+                    }
+                }
+
+                &.cloud-left {
+                    top: 80px;
+                    left: -100px;
+                    animation: up-down2 5s infinite alternate 5s;
+
+                    &.cloud-animate {
+                        left: -30px;
+                        opacity: 1;
+                    }
+                }
+            }
+            .img {
+                position: relative;
+                margin-bottom: 10px;
+            }
+        }
+        .photo-text {
+            font-size: 13px;
+            padding: 10px 20px;
+            flex-direction: column;
+            display: flex;
+            p {
+                text-align: end;
+                color: $gray_text;
+            }
+            .gray-line {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 10px;
+                div {
+                    width: 33%;
+                    height: 1.5px;
+                    background-color: #696b747d;
+                }
+            }
+        }
+    }
+    .page-2 {
+        .title-text {
+            padding: 50px 20px;
+            .title-text1 {
+                font-family: 'GongFan', cursive;
+                display: flex;
+                justify-content: center;
+                font-size: 32px;
+                margin-bottom: 10px;
+                color: $primary;
+            }
+            .title-text2 {
+                display: flex;
+                justify-content: center;
+                img {
+                    width: 65%;
+                }
+            }
+        }
+        .sentences {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            .sentence {
+                text-align: center;
+                font-size: 12px;
+                color: rgba(61, 63, 66, 1);
+            }
+            .title {
+                color: #333;
+            }
+            .gif {
+                width: 62px;
+                height: 62px;
+                margin-right: 20px;
+            }
+        }
+        .main-photos {
+            margin-top: 30px;
+            padding: 0 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            .main-photo1 {
+                img {
+                    width: 100%;
+                    border-radius: 5px;
+                }
+            }
+            .main-photo2 {
+                display: flex;
+                width: 100%;
+                img {
+                    width: calc(100% - 70px);
+                    border-radius: 5px;
+                }
+                .text {
+                    width: 70px;
+                    display: flex;
+                    justify-content: center;
+                    color: $primary;
+                    font-family: 'GongFan', cursive;
+                    font-size: 20px;
+
+                    .text-column {
+                        writing-mode: vertical-rl;
+                        text-orientation: upright;
+                        white-space: nowrap;
+                        line-height: 2;
+                        text-align: center;
+                        div {
+                            &:first-child {
+                                margin-bottom: 30px;
+                            }
+                            &:last-child {
+                                margin-top: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .photo-text {
+            display: flex;
+            padding: 40px 10px 120px;
+            font-size: 12px;
+            color: $gray_text;
+        }
+    }
+    .page-3 {
+        .title-text {
+            padding: 0 10px;
+            position: relative;
+            .title-text1 {
+                font-family: 'JasonHandwriting3', sans-serif;
+                display: flex;
+                font-size: 26px;
+                margin-bottom: 10px;
+                margin-left: 5px;
+                color: #333;
+            }
+            .title-text2 {
+                width: 140px;
+                position: absolute;
+                top: -15px;
+            }
+        }
+        .date-bar {
+            display: flex;
+            align-items: center;
+            padding: 30px 15px;
+            gap: 20px;
+            .line {
+                height: 1px;
+                width: 100%;
+                background-color: #333;
+            }
+            .date {
+                color: #333;
+                font-family: 'JasonHandwriting3', sans-serif;
+                font-size: 22px;
+            }
+        }
+        .main-photos {
+            margin-top: 30px;
+            padding: 0 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .main-photo1 {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .text-area {
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 20px;
+                    .said {
+                        width: 80px;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    .text {
+                        margin-top: 20px;
+                        font-family: 'JasonHandwriting3', sans-serif;
+                        font-size: 16px;
+                    }
+                }
+                .img-area {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    gap: 5px;
+                    img {
+                        width: 160px;
+                        border-radius: 5px;
+                    }
+                    button {
+                        transform: translateX(15px);
+                    }
+                }
+            }
+            .main-photo2 {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .text-area {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    margin-right: 20px;
+                    .said {
+                        width: 80px;
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    .text {
+                        text-align: end;
+                        margin-top: 20px;
+                        font-family: 'JasonHandwriting3', sans-serif;
+                        font-size: 16px;
+                    }
+                }
+                img {
+                    width: 160px;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+    .page-4 {
+        margin-top: 50px;
+        .gradient-image-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                height: 30%; // 漸層高度，可調整
+                pointer-events: none; // 讓滑鼠事件可以穿透到圖片
+            }
+
+            // 上方漸層
+            &::before {
+                top: 0;
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0) 100%);
+            }
+
+            // 下方漸層
+            &::after {
+                bottom: 0;
+                background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0) 100%);
+            }
+        }
+
+        .gradient-image-container-soft {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+                mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+                -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+            }
+        }
+        .photo-text {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 14px;
+            color: $gray_text;
+        }
+        .gif {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 0;
+            img {
+                width: 62px;
+                height: 62px;
+            }
+        }
+    }
+    .page-5 {
+        .main-photos {
+            margin-top: 30px;
+            padding: 0 10px;
+            display: flex;
+            gap: 10px;
+            position: relative;
+            .main-photo1 {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 150px;
+                z-index: 1;
+            }
+            .main-photo2 {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                z-index: 1;
+                margin-top: 150px;
+            }
+            .rect {
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                margin: auto;
+                width: 55%;
+                height: 65%;
+                border-radius: 5px;
+                border: 2px solid #ddd;
+            }
+            img {
+                border-radius: 5px;
+            }
+            .text {
+                position: absolute;
+                top: -20px;
+                right: 10px;
+                text-align: end;
+                margin-top: 20px;
+                font-family: 'GongFan', cursive;
+                font-size: 20px;
+                color: $primary;
+                z-index: 2;
+                p {
+                    margin-bottom: 5px;
+                }
+            }
+        }
+        .photo-text {
+            padding: 0 10px ;
+            display: flex;
+            justify-content: flex-start;
+            text-align: start;
+            font-family: 'GongFan', cursive;
+            font-size: 18px;
+            color: $gray_text;
+        }
+        .shi{
+            padding: 0 40px;
+            display: flex;
+            justify-content: flex-end;
+            font-family: 'GongFan', cursive;
+            color: $primary;
+            font-size: 26px;
+        }
+        .line{
+            margin-left: 30px;
+            font-size: 26px;
+            font-family: 'GongFan', cursive;
+            margin-bottom: 30px;
+            color: $gray_text;
+        }
+    }
+    .page-6{
+        .photo-text {
+            padding: 10px;
+            font-family: 'GongFan', cursive;
+            display: flex;
+            justify-content: center;
+            font-size: 19px;
+            margin-bottom: 10px;
+            color: $primary;
+        }
+    }
+}
+
+@keyframes up-down1 {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(20px) scale(1.2);
+    }
+}
+@keyframes up-down2 {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-20px) scale(1.2);
+    }
+}

@@ -1,0 +1,51 @@
+.CreateButton {
+    position: relative;
+    height: 20px !important;
+    padding-right: 30px !important;
+    padding-left: 10px !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    background-color: var(--color) !important;
+    margin-right: 15px !important;
+    border:1px solid var(--textColor);
+    .button__text {
+        color: var(--textColor);
+        transition: all 0.3s;
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+    .button__icon {
+        border-radius: 0 4px 4px 0;
+        position: absolute;
+        right: 8px;
+        background-color: var(--color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        color: var(--textColor);
+        svg {
+            color: var(--textColor);
+            width: 14px !important;
+            height: 14px !important;
+        }
+    }
+
+    &:hover {
+        background: var(--color);
+
+        .button__text {
+            color: transparent;
+        }
+
+        .button__icon {
+            right: 50%;
+            transform: translateX(50%);
+            border-radius: 4px;
+        }
+    }
+}

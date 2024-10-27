@@ -1,0 +1,111 @@
+
+.avatars {
+    padding: 0 10px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    .avatar-image {
+        width: 100px;
+    }
+    .name {
+        color: $secondary;
+        transform: translateY(-20px);
+    }
+}
+.sentences {
+    height: 100px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    align-items: center;
+    gap: 15px;
+    .sentence {
+        text-align: center;
+        font-size: 12px;
+        color: $gray_text;
+    }
+
+    #mouse-scroll {
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+        animation-delay: 7.5s;
+        margin: auto;
+        span {
+            display: block;
+            width: 5px;
+            height: 5px;
+            transform: rotate(45deg);
+            border-right: 2px solid #bbb;
+            border-bottom: 2px solid #bbb;
+            margin: 0 0 3px 5px;
+        }
+
+        .mouse {
+            height: 21px;
+            width: 14px;
+            border-radius: 10px;
+            border: 2px solid #bbb;
+            top: 170px;
+        }
+
+        .down-arrow-1 {
+            margin-top: 6px;
+            animation: mouse-scroll 1s infinite;
+            animation-delay: 0.1s;
+            animation-direction: alternate;
+        }
+
+        .down-arrow-2 {
+            animation: mouse-scroll 1s infinite;
+            animation-delay: 0.2s;
+            animation-direction: alternate;
+        }
+
+        .down-arrow-3 {
+            animation: mouse-scroll 1s infinite;
+            animation-delay: 0.3s;
+            animation-direction: alternate;
+        }
+
+        .mouse-in {
+            height: 5px;
+            width: 2px;
+            display: block;
+            margin: 5px auto;
+            background: #bbb;
+            position: relative;
+            animation: animated-mouse 1.2s ease infinite;
+        }
+    }
+
+    @keyframes animated-mouse {
+        0% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(6px);
+        }
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes mouse-scroll {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}
