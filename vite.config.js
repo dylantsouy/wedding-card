@@ -9,7 +9,6 @@ export default defineConfig({
     svgr({
       exportAsReactComponent: true,
     }),],
-  base: '/',
   css: {
     preprocessorOptions: {
       scss: {
