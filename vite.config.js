@@ -15,6 +15,7 @@ export default defineConfig({
   build: {
     assetsDir: 'src/assets',
   },
+  base: './',
   css: {
     preprocessorOptions: {
       scss: {
