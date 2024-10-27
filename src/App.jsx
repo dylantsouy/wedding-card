@@ -22,9 +22,16 @@ import { Chat } from '@/assets/icons';
 import CreateButton from './components/CreateButton';
 import { PreloadImage } from './components/PreloadImage';
 import { Loader } from './components/Loader';
+import sentyMaruko from '@/fonts/SentyMARUKO.ttf';
+import jasonHandwriting from '@/fonts/JasonHandwriting3.ttf';
+import zuiShenDe from '@/fonts/ZuiShenDeYeLiZuiWenRou-2.ttf';
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
+    const [loadingStatus, setLoadingStatus] = useState({
+        fonts: false,
+        images: false,
+    });
     const observerRef = useRef(null);
 
     useEffect(() => {
@@ -97,29 +104,57 @@ function App() {
     };
 
     useEffect(() => {
+        const loadFonts = async () => {
+            const fonts = [
+                new FontFace('NaikaiFontName', `url(${sentyMaruko})`),
+                new FontFace('JasonHandwriting3', `url(${jasonHandwriting})`),
+                new FontFace('GongFan', `url(${zuiShenDe})`),
+            ];
+
+            try {
+                const loadedFonts = await Promise.all(fonts.map((font) => font.load()));
+                loadedFonts.forEach((font) => document.fonts.add(font));
+                setLoadingStatus((prev) => ({ ...prev, fonts: true }));
+            } catch (err) {
+                console.error('Font loading failed:', err);
+                setLoadingStatus((prev) => ({ ...prev, fonts: true }));
+            }
+        };
+
         const imageUrls = [hug, run, photo1, photo2, photo3, photo4, photo5G, photo5, photo6, photo7, welcome, cloud, about, sheSaid, heSaid, he, she];
+
+        const loadImages = () => {
+            return Promise.all(
+                imageUrls.map((url) => {
+                    return new Promise((resolve) => {
+                        const img = new Image();
+                        img.src = url;
+                        img.onload = resolve;
+                        img.onerror = resolve;
+                    });
+                }),
+            ).then(() => {
+                setLoadingStatus((prev) => ({ ...prev, images: true }));
+            });
+        };
 
         const minLoadingTime = new Promise((resolve) => {
             setTimeout(resolve, 2000);
         });
 
-        const imageLoadingPromise = Promise.all(
-            imageUrls.map((url) => {
-                return new Promise((resolve, reject) => {
-                    const img = new Image();
-                    img.src = url;
-                    img.onload = resolve;
-                    img.onerror = resolve;
-                });
-            }),
-        );
-
-        Promise.all([minLoadingTime, imageLoadingPromise]).then(() => {
-            setIsLoading(false);
-        });
+        // 先載入字體
+        loadFonts()
+            .then(() => {
+                // 字體載入後再載入圖片
+                return Promise.all([loadImages(), minLoadingTime]);
+            })
+            .then(() => {
+                setIsLoading(false);
+            });
 
         return () => {
             setIsLoading(true);
+            setLoadingStatus({ fonts: false, images: false });
         };
     }, []);
 
@@ -128,6 +163,11 @@ function App() {
             {isLoading ? (
                 <div className='loader-overlay'>
                     <Loader />
+                    <div className='loading-status'>
+                        {!loadingStatus.fonts && <div>正在載入字體，請稍候...</div>}
+                        {loadingStatus.fonts && !loadingStatus.images && <div>正在載入圖片，請稍候...</div>}
+                        {loadingStatus.fonts && loadingStatus.images && <div>馬上就好...</div>}
+                    </div>
                 </div>
             ) : (
                 <div className='container '>

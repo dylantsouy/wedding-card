@@ -11,7 +11,30 @@
     z-index: 9999;
     overflow: hidden;
 }
+.loading-status {
+    font-family: 'Source Han Serif TC', serif;
+    text-align: center;
+    opacity: 0.8;
+    animation: fadeInOut 1.5s ease-in-out infinite;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    transform: translateY(100px);
+    
+    div {
+        margin-top: 1rem;
+        position: relative;
+        padding-right: 1.5em;
+    }
+}
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
 
+@keyframes spin {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+}
 .cssload-main {
     position: absolute;
     content: '';
