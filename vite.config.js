@@ -9,9 +9,7 @@ export default defineConfig({
     svgr({
       exportAsReactComponent: true,
     }),],
-  prettier: {
-    configFile: './.prettierrc.json',
-  },
+  base: '/',
   css: {
     preprocessorOptions: {
       scss: {
