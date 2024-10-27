@@ -104,54 +104,65 @@ function App() {
     };
 
     useEffect(() => {
-        const loadFonts = async () => {
+        const loadResources = async () => {
             const fonts = [
                 new FontFace('NaikaiFontName', `url(${sentyMaruko})`),
                 new FontFace('JasonHandwriting3', `url(${jasonHandwriting})`),
                 new FontFace('GongFan', `url(${zuiShenDe})`),
             ];
-
+    
+            const loadFonts = async () => {
+                try {
+                    const loadedFonts = await Promise.all(fonts.map((font) => font.load()));
+                    loadedFonts.forEach((font) => document.fonts.add(font));
+                    setLoadingStatus((prev) => ({ ...prev, fonts: true }));
+                } catch (err) {
+                    console.error('Font loading failed:', err);
+                    setLoadingStatus((prev) => ({ ...prev, fonts: false }));
+                }
+            };
+    
+            const imageUrls = [hug, run, photo1, photo2, photo3, photo4, photo5, photo6, photo7, welcome, cloud, about, sheSaid, heSaid, he, she];
+            
+            const loadImages = async () => {
+                try {
+                    await Promise.all(
+                        imageUrls.map((url) =>
+                            new Promise((resolve) => {
+                                const img = new Image();
+                                img.src = url;
+                                img.onload = resolve;
+                                img.onerror = () => {
+                                    console.warn(`Image failed to load: ${url}`);
+                                    resolve(); // 仍然resolve以避免影響其他圖片
+                                };
+                            })
+                        )
+                    );
+                    setLoadingStatus((prev) => ({ ...prev, images: true }));
+                } catch (error) {
+                    console.error('Image loading error:', error);
+                    setLoadingStatus((prev) => ({ ...prev, images: false }));
+                }
+            };
+    
+            const minLoadingTime = new Promise((resolve) => setTimeout(resolve, 2000));
+            const timeoutPromise = new Promise((resolve) => setTimeout(resolve, 6000));
+    
+            // 先載入字體再載入圖片
             try {
-                const loadedFonts = await Promise.all(fonts.map((font) => font.load()));
-                loadedFonts.forEach((font) => document.fonts.add(font));
-                setLoadingStatus((prev) => ({ ...prev, fonts: true }));
-            } catch (err) {
-                console.error('Font loading failed:', err);
-                setLoadingStatus((prev) => ({ ...prev, fonts: true }));
+                await loadFonts();
+                await Promise.all([loadImages(), minLoadingTime]); // 確保至少 2 秒
+                await Promise.race([Promise.all([loadImages(), minLoadingTime]), timeoutPromise]); // 確保最多6秒
+                setIsLoading(false);
+            } catch (error) {
+                console.error('Loading process error:', error);
+                setIsLoading(false); // 任意錯誤均結束loading
             }
         };
-
-        const imageUrls = [hug, run, photo1, photo2, photo3, photo4, photo5, photo6, photo7, welcome, cloud, about, sheSaid, heSaid, he, she];
-
-        const loadImages = () => {
-            return Promise.all(
-                imageUrls.map((url) => {
-                    return new Promise((resolve) => {
-                        const img = new Image();
-                        img.src = url;
-                        img.onload = resolve;
-                        img.onerror = resolve;
-                    });
-                }),
-            ).then(() => {
-                setLoadingStatus((prev) => ({ ...prev, images: true }));
-            });
-        };
-
-        const minLoadingTime = new Promise((resolve) => {
-            setTimeout(resolve, 2000);
-        });
-
-        // 先載入字體
-        loadFonts()
-            .then(() => {
-                // 字體載入後再載入圖片
-                return Promise.all([loadImages(), minLoadingTime]);
-            })
-            .then(() => {
-                setIsLoading(false);
-            });
-
+    
+        loadResources();
+    
         return () => {
             setIsLoading(true);
             setLoadingStatus({ fonts: false, images: false });
