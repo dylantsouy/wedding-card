@@ -75,7 +75,7 @@
                 margin-top: 10px;
                 div {
                     width: 33%;
-                    height: 1.5px;
+                    height: 1px;
                     background-color: #696b747d;
                 }
             }
@@ -109,7 +109,7 @@
             .sentence {
                 text-align: center;
                 font-size: 12px;
-                color: rgba(61, 63, 66, 1);
+                color: $gray_text;
             }
             .title {
                 color: #333;
@@ -219,6 +219,7 @@
                 .text-area {
                     display: flex;
                     flex-direction: column;
+                    color: $gray_text;
                     margin-left: 20px;
                     .said {
                         width: 80px;
@@ -238,7 +239,7 @@
                     align-items: flex-end;
                     gap: 5px;
                     img {
-                        width: 160px;
+                        width: 180px;
                         border-radius: 5px;
                     }
                     button {
@@ -254,6 +255,7 @@
                     display: flex;
                     flex-direction: column;
                     align-items: flex-end;
+                    color: $gray_text;
                     margin-right: 20px;
                     .said {
                         width: 80px;
@@ -269,7 +271,7 @@
                     }
                 }
                 img {
-                    width: 160px;
+                    width: 180px;
                     border-radius: 5px;
                 }
             }
@@ -294,8 +296,8 @@
                 position: absolute;
                 left: 0;
                 right: 0;
-                height: 30%; // 漸層高度，可調整
-                pointer-events: none; // 讓滑鼠事件可以穿透到圖片
+                height: 30%;
+                pointer-events: none;
             }
 
             // 上方漸層
@@ -308,20 +310,6 @@
             &::after {
                 bottom: 0;
                 background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0) 100%);
-            }
-        }
-
-        .gradient-image-container-soft {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-
-            img {
-                width: 100%;
-                height: auto;
-                display: block;
-                mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
-                -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
             }
         }
         .photo-text {
@@ -395,7 +383,7 @@
             }
         }
         .photo-text {
-            padding: 0 10px ;
+            padding: 0 10px;
             display: flex;
             justify-content: flex-start;
             text-align: start;
@@ -403,7 +391,7 @@
             font-size: 18px;
             color: $gray_text;
         }
-        .shi{
+        .shi {
             padding: 0 40px;
             display: flex;
             justify-content: flex-end;
@@ -411,16 +399,16 @@
             color: $primary;
             font-size: 26px;
         }
-        .line{
+        .line {
             margin-left: 30px;
-            font-size: 26px;
-            font-family: 'GongFan', cursive;
+            font-size: 24px;
+            font-family: cursive;
             margin-bottom: 30px;
             color: $gray_text;
         }
     }
-    .page-6{
-        .photo-text {
+    .page-6 {
+        .photo-text1 {
             padding: 10px;
             font-family: 'GongFan', cursive;
             display: flex;
@@ -428,6 +416,235 @@
             font-size: 19px;
             margin-bottom: 10px;
             color: $primary;
+        }
+        .photo-text2 {
+            padding: 0 10px;
+            text-align: center;
+            font-family: 'GongFan', cursive;
+            font-size: 16px;
+            color: $gray_text;
+        }
+        .love {
+            margin: 50px 20px;
+        }
+    }
+    .page-7 {
+        .title-text {
+            padding: 50px 20px 30px;
+            .title-text1 {
+                font-family: 'GongFan', cursive;
+                display: flex;
+                justify-content: center;
+                font-size: 32px;
+                margin-bottom: 10px;
+                color: $primary;
+            }
+            .title-text2 {
+                text-align: center;
+                font-family: 'GongFan', cursive;
+                font-size: 16px;
+                color: $gray_text;
+                img {
+                    width: 65%;
+                }
+            }
+        }
+        .main-photo {
+            .img-flex {
+                position: relative;
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                img {
+                    border-radius: 5px;
+                }
+                .count {
+                    right: 10%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    position: absolute;
+                    display: flex;
+                    justify-content: center;
+                    z-index: 2;
+                }
+
+                .calendar {
+                    position: absolute;
+                    bottom: -10%;
+                    left: 40%;
+                    transform: translateX(-50%);
+                    z-index: 2;
+                }
+            }
+        }
+    }
+    .page-8 {
+        margin-top: 100px;
+        .title-text {
+            padding: 50px 20px 30px;
+            .title-text1 {
+                font-family: 'GongFan', cursive;
+                display: flex;
+                justify-content: center;
+                font-size: 32px;
+                margin-bottom: 10px;
+                color: $primary;
+            }
+            .title-text2 {
+                text-align: center;
+                font-family: 'GongFan', cursive;
+                font-size: 16px;
+                color: $gray_text;
+                img {
+                    width: 65%;
+                }
+            }
+        }
+    }
+    .page-8 {
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+
+        .photos-container {
+        padding: 10px;
+        img {
+                border-radius: 5px;
+            }
+        }
+
+        .photo-text {
+            font-size: 18px;
+            text-align: center;
+            color: $primary;
+            margin: 10px 0 40px;
+            font-family: 'JasonHandwriting3', sans-serif;
+            p:last-child {
+                color: #333;
+            }
+        }
+        .location-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            .map-container {
+                width: 100%;
+                height: 300px;
+                border-radius: 10px;
+                overflow: hidden;
+
+                iframe {
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                }
+            }
+        }
+        .park {
+            margin-top: 50px;
+            padding: 0 20px;
+            .park-text {
+                .park-text1 {
+                    font-size: 18px;
+                    text-align: center;
+                    color: $primary;
+                    margin: 10px 0 10px;
+                    font-family: 'JasonHandwriting3', sans-serif;
+                }
+                .park-text2 {
+                    font-size: 18px;
+                    text-align: center;
+                    margin: 10px 0 10px;
+                    font-family: 'JasonHandwriting3', sans-serif;
+                    color: #333;
+                }
+            }
+        }
+        .last-text {
+            margin-top: 50px;
+            flex-direction: column;
+            display: flex;
+            color: #747373;
+            p {
+                font-size: 20px;
+                margin-left: 20px;
+            }
+            .text{
+                margin-left: 20px;
+                font-size: 14px;
+            }
+            .gray-line {
+                margin: 10px 0;
+                div {
+                    width: 50%;
+                    height: 1.5px;
+                    background-color: #747373;
+                }
+            }
+        }
+    }
+    .page-9 {
+        .title{
+            padding: 0 20px;
+            margin-top: 60px;
+            font-family: 'GongFan', cursive;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 32px;
+            color: $primary;
+        }
+        .gradient-image-container-soft {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 10px;
+
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                height: 10%;
+                pointer-events: none;
+            }
+
+            &::before {
+                top: 0;
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0) 100%);
+            }
+
+            // 下方漸層
+            &::after {
+                bottom: 0;
+                background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0) 100%);
+            }
+        }
+        .last-text{
+            text-align: center;
+            margin: 20px 0 10px;
+            color: $gray_text;
+            font-size: 14px;
+        }
+        .see{
+            text-align: center;
+            margin-bottom: 20px;
+            color: $gray_text;
+            font-size: 16px;
+        }
+        .thx{
+            font-family: 'GongFan', cursive;
+            display: flex;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 10px;
         }
     }
 }

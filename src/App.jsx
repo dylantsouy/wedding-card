@@ -5,10 +5,16 @@ import photo1 from '@/assets/photo1.png';
 import photo2 from '@/assets/photo2.png';
 import photo3 from '@/assets/photo3.png';
 import photo4 from '@/assets/photo4.png';
-import photo5G from '@/assets/photo5.gif';
-import photo5 from '@/assets/photo5.gif';
+import photo5 from '@/assets/photo5.png';
 import photo6 from '@/assets/photo6.png';
 import photo7 from '@/assets/photo7.png';
+import photo8 from '@/assets/photo8.png';
+import photo9 from '@/assets/photo9.png';
+import photo10 from '@/assets/photo10.png';
+import photo11 from '@/assets/photo11.png';
+import photo12 from '@/assets/photo12.png';
+import park from '@/assets/park.png';
+import love from '@/assets/love.png';
 import welcome from '@/assets/welcome.png';
 import cloud from '@/assets/cloud.png';
 import about from '@/assets/about.png';
@@ -20,16 +26,15 @@ import { useEffect, useRef, useState } from 'react';
 import { BounceText } from './components/BounceText';
 import { Chat } from '@/assets/icons';
 import CreateButton from './components/CreateButton';
-import { PreloadImage } from './components/PreloadImage';
 import { Loader } from './components/Loader';
-import sentyMaruko from '@/fonts/SentyMARUKO.ttf';
-import jasonHandwriting from '@/fonts/JasonHandwriting3.ttf';
-import zuiShenDe from '@/fonts/ZuiShenDeYeLiZuiWenRou-2.ttf';
+import CountdownTimer from './components/CountdownTimer';
+import Calendar from './components/Calendar';
 
 function App() {
+    const targetDate = '2025-01-11';
+    const targetHour = 12;
     const [isLoading, setIsLoading] = useState(true);
     const [loadingStatus, setLoadingStatus] = useState({
-        fonts: false,
         images: false,
     });
     const observerRef = useRef(null);
@@ -105,70 +110,49 @@ function App() {
 
     useEffect(() => {
         const loadResources = async () => {
-            const fonts = [
-                new FontFace('NaikaiFontName', `url(${sentyMaruko})`),
-                new FontFace('JasonHandwriting3', `url(${jasonHandwriting})`),
-                new FontFace('GongFan', `url(${zuiShenDe})`),
-            ];
-    
-            const loadFonts = async () => {
-                try {
-                    const loadedFonts = await Promise.all(fonts.map((font) => font.load()));
-                    loadedFonts.forEach((font) => document.fonts.add(font));
-                    setLoadingStatus((prev) => ({ ...prev, fonts: true }));
-                } catch (err) {
-                    console.error('Font loading failed:', err);
-                    setLoadingStatus((prev) => ({ ...prev, fonts: false }));
-                }
-            };
-    
             const imageUrls = [hug, run, photo1, photo2, photo3, photo4, photo5, photo6, photo7, welcome, cloud, about, sheSaid, heSaid, he, she];
-            
             const loadImages = async () => {
                 try {
                     await Promise.all(
-                        imageUrls.map((url) =>
-                            new Promise((resolve) => {
-                                const img = new Image();
-                                img.src = url;
-                                img.onload = resolve;
-                                img.onerror = () => {
-                                    console.warn(`Image failed to load: ${url}`);
-                                    resolve(); // 仍然resolve以避免影響其他圖片
-                                };
-                            })
-                        )
+                        imageUrls.map(
+                            (url) =>
+                                new Promise((resolve) => {
+                                    const img = new Image();
+                                    img.src = url;
+                                    img.onload = resolve;
+                                    img.onerror = () => {
+                                        console.warn(`Image failed to load: ${url}`);
+                                        resolve();
+                                    };
+                                }),
+                        ),
                     );
                     setLoadingStatus((prev) => ({ ...prev, images: true }));
                 } catch (error) {
-                    console.error('Image loading error:', error);
                     setLoadingStatus((prev) => ({ ...prev, images: false }));
                 }
             };
-    
-            const minLoadingTime = new Promise((resolve) => setTimeout(resolve, 2000));
-            const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error("Loading timed out")), 6000));
-    
-            // 用 Promise.race 確保6秒內完成，否則終止
+
+            const minLoadingTime = new Promise((resolve) => setTimeout(resolve, 0));
+            const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Loading timed out')), 6000));
+
             Promise.race([
                 (async () => {
-                    await loadFonts();
                     await Promise.all([loadImages(), minLoadingTime]);
                 })(),
-                timeoutPromise
+                timeoutPromise,
             ])
                 .then(() => setIsLoading(false))
                 .catch((error) => {
-                    console.warn(error.message);
-                    setIsLoading(false); // 超過6秒，立即結束loading
+                    setIsLoading(false);
                 });
         };
-    
+
         loadResources();
-    
+
         return () => {
             setIsLoading(true);
-            setLoadingStatus({ fonts: false, images: false });
+            setLoadingStatus({ images: false });
         };
     }, []);
 
@@ -178,7 +162,6 @@ function App() {
                 <div className='loader-overlay'>
                     <Loader />
                     <div className='loading-status'>
-                        {!loadingStatus.fonts && <div>正在載入字體，請稍候...</div>}
                         {loadingStatus.fonts && !loadingStatus.images && <div>正在載入圖片，請稍候...</div>}
                         {loadingStatus.fonts && loadingStatus.images && <div>馬上就好...</div>}
                     </div>
@@ -357,7 +340,7 @@ function App() {
                                 <img src={photo6} alt='main-photo1' />
                             </div>
                             <div className='main-photo2'>
-                                <PreloadImage smallSrc={photo5} largeSrc={photo5G} alt='main-photo2' />
+                                <img src={photo5} alt='main-photo2' />
                             </div>
                         </div>
                         <div className='photo-text'>
@@ -377,7 +360,93 @@ function App() {
                         <div className='main-photo'>
                             <img src={photo7} alt='main-photo1' />
                         </div>
-                        <div className='photo-text'>遇見你之後，我開始熱愛生活，期盼餘生</div>
+                        <div className='photo-text1'>遇見你之後，我開始熱愛生活，期盼餘生</div>
+                        <div className='photo-text2'>初見傾心，再見傾情，此生與你共度時光。</div>
+                        <div className='love'>
+                            <img src={love} alt='love' />
+                        </div>
+                    </div>
+                    <div className='page-7'>
+                        <div className='title-text'>
+                            <div className='title-text1'>婚禮時間</div>
+                            <div className='title-text2'>
+                                2025年1月11日 星期六
+                                <br />
+                                農曆臘月十二 12:00 午宴
+                            </div>
+                        </div>
+                        <div className='main-photo'>
+                            <div className='img-flex'>
+                                <img src={photo8} alt='main-photo1' />
+                                <div className='count'>
+                                    <CountdownTimer targetDate={targetDate} targetHour={targetHour} />
+                                </div>
+                                <div className='calendar'>
+                                    <Calendar month={0} year={2025} highlightDate={11} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='page-8'>
+                        <div className='title-text'>
+                            <div className='title-text1'>婚禮地點</div>
+                            <div className='title-text2'>
+                                2025年1月11日 星期六
+                                <br />
+                                農曆臘月十二 12:00 午宴
+                            </div>
+                        </div>
+                        <div className='photos-container'>
+                            <img src={photo10} alt='wedding photo' />
+                            <img src={photo9} alt='wedding photo' />
+                        </div>
+                        <div className='photo-text'>
+                            <p>台南福爾摩沙遊艇酒店</p>
+                            <p>水景廳3F</p>
+                        </div>
+
+                        <div className='location-container'>
+                            <div className='map-container'>
+                                <iframe
+                                    src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.6763112590465!2d120.15287911089962!3d22.998927417123348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346dd9b680e0fcdb%3A0xbbd8ca575991685a!2z56aP54i-5pGp5rKZ6YGK6ImH6YWS5bqX!5e0!3m2!1szh-TW!2stw!4v1730126785393!5m2!1szh-TW!2stw'
+                                    allowFullScreen=''
+                                    loading='lazy'
+                                    referrerPolicy='no-referrer-when-downgrade'
+                                ></iframe>
+                            </div>
+                        </div>
+                        <div className='park'>
+                            <div className='park-text'>
+                                <div className='park-text1'>停車資訊</div>
+                                <div className='park-text2'>
+                                    酒店提供戶外及地下停車場，入住及用餐之旅客可享免費停車，全日24小時開放。請隨身攜帶貴重物品，酒店不負責停車場內停放之車輛及財物損失。
+                                </div>
+                            </div>
+                            <div className='photos-container'>
+                                <img src={park} alt='park' />
+                            </div>
+                        </div>
+                    </div>
+                    <div className='page-9'>
+                        <div className="title">We're married...</div>
+                        <div className='main-photo' id='main-photo'>
+                            <div className='gradient-image-container-soft'>
+                                <img src={photo11} alt='photo11' />
+                            </div>
+                        </div>
+                        <div className='last-text'>
+                            這是一場人生為數不多的相聚
+                            <br />
+                            是千里迢迢地奔赴
+                            <br />
+                            是不計得失的支持
+                            <br />
+                            願所愛皆所得 所想皆所願
+                            <br />
+                            感謝您/不遠萬里/為我們祝福
+                        </div>
+                        <div className='see'>婚禮見 !</div>
+                        <div className='thx'>- Thanks -</div>
                     </div>
                 </div>
             )}

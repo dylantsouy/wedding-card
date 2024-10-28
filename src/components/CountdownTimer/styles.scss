@@ -1,0 +1,54 @@
+.countdown-timer-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0px;
+  
+    .time-block {
+      position: relative;
+      padding: 4px;
+      border-radius: 12px;
+      background: linear-gradient(45deg,#cfb20f, #fcf1b5, #cfb20f98,#FFA500);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 50px;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 12px;
+        background: linear-gradient(45deg, #cfb20f, #FFA500);
+        z-index: -1;
+        filter: blur(2px);
+        opacity: 0.5;
+      }
+  
+      .time-content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 5px;
+        background: linear-gradient(135deg, #8B0000, #800000);
+        border-radius: 8px;
+        
+        .number {
+          font-size: 24px;
+          font-weight: bold;
+          text-align: center;
+          background: linear-gradient(to bottom, #FFD700, #FFA500);
+          background-clip: text;
+          color: transparent;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+  
+        .unit {
+          font-size: 20px;
+          color: #FFD700;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
