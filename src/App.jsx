@@ -372,7 +372,7 @@ function App() {
                             <div className='title-text2'>
                                 2025年1月11日 星期六
                                 <br />
-                                農曆臘月十二 12:00 午宴
+                                午宴 12:00 入場
                             </div>
                         </div>
                         <div className='main-photo'>
@@ -391,9 +391,8 @@ function App() {
                         <div className='title-text'>
                             <div className='title-text1'>婚禮地點</div>
                             <div className='title-text2'>
-                                2025年1月11日 星期六
+                                台南福爾摩沙遊艇酒店
                                 <br />
-                                農曆臘月十二 12:00 午宴
                             </div>
                         </div>
                         <div className='photos-container'>
@@ -401,8 +400,8 @@ function App() {
                             <img src={photo9} alt='wedding photo' />
                         </div>
                         <div className='photo-text'>
-                            <p>台南福爾摩沙遊艇酒店</p>
-                            <p>水景廳3F</p>
+                            <p>3F 水景廳</p>
+                            <p>鄒陳府喜宴</p>
                         </div>
 
                         <div className='location-container'>
@@ -428,7 +427,7 @@ function App() {
                         </div>
                     </div>
                     <div className='page-9'>
-                        <div className="title">We're married...</div>
+                        <div className='title'>We're married...</div>
                         <div className='main-photo' id='main-photo'>
                             <div className='gradient-image-container-soft'>
                                 <img src={photo11} alt='photo11' />
