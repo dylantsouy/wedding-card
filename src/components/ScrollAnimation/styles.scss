@@ -1,0 +1,129 @@
+.scroll-animate {
+    opacity: 0;
+    will-change: transform, opacity;
+    transition-property: all;
+    transition-timing-function: ease;
+    transition-duration: var(--duration, 0.6s);
+    transition-delay: var(--delay, 0s);
+}
+
+
+// 顯示時的狀態
+.show-animate {
+    opacity: 1;
+}
+
+// 向上滑入
+.slide-up {
+    transform: translateY(30px);
+    &.show-animate {
+        transform: translateY(0);
+    }
+}
+
+// 向下滑入
+.slide-down {
+    transform: translateY(-30px);
+    &.show-animate {
+        transform: translateY(0);
+    }
+}
+
+// 從左滑入
+.slide-left {
+    transform: translateX(-30px);
+    &.show-animate {
+        transform: translateX(0);
+    }
+}
+
+// 從右滑入
+.slide-right {
+    transform: translateX(30px);
+    &.show-animate {
+        transform: translateX(0);
+    }
+}
+
+// 縮放
+.scale {
+    transform: scale(0.9);
+    &.show-animate {
+        transform: scale(1);
+    }
+}
+
+// 淡入效果
+.fade {
+    opacity: 0;
+    &.show-animate {
+        opacity: 1;
+    }
+}
+
+// 縮放淡入
+.scale-fade {
+    opacity: 0;
+    transform: scale(0.95);
+    &.show-animate {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.duration-fast {
+    --duration: 0.3s;
+}
+
+.duration-normal {
+    --duration: 0.6s;
+}
+
+.duration-slow {
+    --duration: 1s;
+}
+
+.duration-very-slow {
+    --duration: 1.5s;
+}
+
+.debug-outline {
+    outline: 2px dashed rgba(255, 0, 0, 0.5);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 0, 0, 0.1);
+        pointer-events: none;
+    }
+}
+.debug-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px;
+    font-size: 12px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-radius: 4px;
+
+    span {
+        white-space: nowrap;
+
+        &.status-active {
+            color: #4caf50;
+        }
+
+        &.status-waiting {
+            color: #ffa500;
+        }
+    }
+}

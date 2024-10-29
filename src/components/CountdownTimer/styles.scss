@@ -3,6 +3,12 @@
     flex-direction: column;
     gap: 20px;
     padding: 0px;
+    @media screen and (max-width: 400px) {
+      gap: 15px;
+    }
+    @media screen and (max-width: 330px) {
+      gap: 10px;
+    }
   
     .time-block {
       position: relative;
@@ -11,6 +17,12 @@
       background: linear-gradient(45deg,#cfb20f, #fcf1b5, #cfb20f98,#FFA500);
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       width: 50px;
+      @media screen and (max-width: 400px) {
+        width: 40px;
+      }
+      @media screen and (max-width: 330px) {
+        width: 30px;
+      }
       
       &::before {
         content: '';
@@ -42,12 +54,24 @@
           background-clip: text;
           color: transparent;
           text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          @media screen and (max-width: 400px) {
+            font-size: 20px;
+          }
+          @media screen and (max-width: 330px) {
+            font-size: 16px;
+          }
         }
   
         .unit {
           font-size: 20px;
           color: #FFD700;
           text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          @media screen and (max-width: 400px) {
+            font-size: 16px;
+          }
+          @media screen and (max-width: 330px) {
+            font-size: 14px;
+          }
         }
       }
     }

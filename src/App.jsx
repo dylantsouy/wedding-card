@@ -12,7 +12,6 @@ import photo8 from '@/assets/photo8.png';
 import photo9 from '@/assets/photo9.png';
 import photo10 from '@/assets/photo10.png';
 import photo11 from '@/assets/photo11.png';
-import photo12 from '@/assets/photo12.png';
 import park from '@/assets/park.png';
 import love from '@/assets/love.png';
 import welcome from '@/assets/welcome.png';
@@ -29,6 +28,9 @@ import CreateButton from './components/CreateButton';
 import { Loader } from './components/Loader';
 import CountdownTimer from './components/CountdownTimer';
 import Calendar from './components/Calendar';
+import { LazyImage } from './components/LazyImage';
+import { ScrollAnimation } from './components/ScrollAnimation';
+import { useScrollBehavior } from './hooks/useScrollBehavior';
 
 function App() {
     const targetDate = '2025-01-11';
@@ -134,7 +136,7 @@ function App() {
             };
 
             const minLoadingTime = new Promise((resolve) => setTimeout(resolve, 0));
-            const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Loading timed out')), 6000));
+            const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Loading timed out')), 8000));
 
             Promise.race([
                 (async () => {
@@ -155,7 +157,7 @@ function App() {
             setLoadingStatus({ images: false });
         };
     }, []);
-
+    useScrollBehavior();
     return (
         <>
             {isLoading ? (
@@ -183,23 +185,23 @@ function App() {
                                 <BounceText text='我們結婚啦!' />
                             </div>
                         </div>
-                        <div className='photo-text'>
+                        <ScrollAnimation animation='fade' delay={1500} className='photo-text'>
                             <p>緣分讓我們相遇，愛情讓我們相守</p>
                             <div className='gray-line'>
                                 <div></div>
                             </div>
-                        </div>
+                        </ScrollAnimation>
                     </div>
                     <div className='page-2'>
                         <div className='title-text'>
                             <div className='title-text1'>婚禮邀請</div>
                             <div className='title-text2'>
-                                <img src={welcome} alt='welcome' />
+                                <LazyImage src={welcome} alt='welcome' />
                             </div>
                         </div>
                         <div className='sentences'>
                             <div className='title'>「婚禮」</div>
-                            <div className='sentence'>
+                            <div animation='slide-up' rootMargin='-280px 0px' className='sentence'>
                                 <br />
                                 在人生旅途中
                                 <br />
@@ -207,40 +209,45 @@ function App() {
                                 <br />
                                 無比欣喜於這一天
                                 <br />
-                                你來為我們的幸福作見證
+                                你來替我們的幸福作見證
                                 <br />
                                 衷心希望每一位收到這份邀請的您
                                 <br />
-                                一同見證這一生中最重要的決定。
+                                一同見證這一生中最重要的抉擇。
                             </div>
-                            <div className='gif'>
-                                <img src={hug} alt='hug' />
-                            </div>
+                            <ScrollAnimation duration={0.75} animation='fade' rootMargin='-150px 0px' delay={700} className='gif'>
+                                <LazyImage src={hug} alt='hug' />
+                            </ScrollAnimation>
                         </div>
 
                         <div className='main-photos'>
-                            <div className='main-photo1'>
-                                <img src={photo2} alt='main-photo1' />
-                            </div>
+                            <ScrollAnimation duration={1} animation='slide-up' rootMargin='-80px 0px' className='main-photo1'>
+                                <div>
+                                    <LazyImage src={photo2} alt='main-photo2' />
+                                </div>
+                            </ScrollAnimation>
                             <div className='main-photo2'>
-                                <img src={photo3} alt='main-photo1' />
-                                <div className='text'>
+                                <ScrollAnimation className='img' duration={1} delay={700} animation='slide-right'>
+                                    <LazyImage src={photo3} alt='main-photo1' />
+                                </ScrollAnimation>
+                                <ScrollAnimation duration={1} delay={1000} animation='slide-right' className='text'>
                                     <div className='text-column'>
                                         <div>滿心期待藏於心底</div>
                                         <div>等著與你相逢之時</div>
                                     </div>
-                                </div>
+                                </ScrollAnimation>
                             </div>
                         </div>
-                        <div className='photo-text'>
-                            一枚戒指，牽繫了兩個人的一生 <br /> 兩顆心，共度溫馨的小日子 <br /> 從此我為你挽起長髮 ，從此你的秋衣由我準備 <br /> 願攜手到白頭，珍惜每一個平凡的日子
-                        </div>
+                        <ScrollAnimation delay={1300} rootMargin='100px 0px' animation='slide-left' className='photo-text'>
+                            一段誓言，象徵著我們共同的未來與夢想 <br /> 彼此的陪伴，共享每一個平凡而美好的日子 <br /> 從今我替你挽起長裙，從此你的秋衣由我打理 <br />{' '}
+                            願一生相伴，不負時光，珍惜彼此的每一次擁抱與微笑
+                        </ScrollAnimation>
                     </div>
                     <div className='page-3'>
                         <div className='title-text'>
                             <div className='title-text1'>- 關於我們 -</div>
                             <div className='title-text2'>
-                                <img src={about} alt='about' />
+                                <LazyImage src={about} alt='about' />
                             </div>
                         </div>
                         <div className='date-bar'>
@@ -253,20 +260,22 @@ function App() {
                             <div className='main-photo1'>
                                 <div className='text-area'>
                                     <div className='said'>
-                                        <img src={sheSaid} alt='sheSaid' />
+                                        <LazyImage src={sheSaid} alt='sheSaid' />
                                     </div>
-                                    <div className='text'>
-                                        "每當我想到
+                                    <ScrollAnimation duration='very-slow' animation='slide-up' className='text'>
+                                        "每當我回想起
                                         <br />
-                                        我們的未來
+                                        我們的旅程
                                         <br />
-                                        心中便湧現出
+                                        心中便充滿了
                                         <br />
-                                        無限的期待與幸福"
-                                    </div>
+                                        未來的美好期待"
+                                    </ScrollAnimation>
                                 </div>
                                 <div className='img-area'>
-                                    <img src={she} alt='she' />
+                                    <ScrollAnimation duration='very-slow' rootMargin='-100px 0px' animation='scale-fade'>
+                                        <LazyImage src={she} alt='she' />
+                                    </ScrollAnimation>
                                     <CreateButton
                                         textColor='#8c2531'
                                         color='#fff'
@@ -279,7 +288,9 @@ function App() {
                             </div>
                             <div className='main-photo2'>
                                 <div className='img-area'>
-                                    <img src={he} alt='he' />
+                                    <ScrollAnimation duration='very-slow' rootMargin='-150px 0px' animation='scale-fade'>
+                                        <LazyImage src={he} alt='he' />
+                                    </ScrollAnimation>
                                     <CreateButton
                                         textColor='#8c2531'
                                         color='#fff'
@@ -291,9 +302,9 @@ function App() {
                                 </div>
                                 <div className='text-area'>
                                     <div className='said'>
-                                        <img src={heSaid} alt='heSaid' />
+                                        <LazyImage src={heSaid} alt='heSaid' />
                                     </div>
-                                    <div className='text'>
+                                    <ScrollAnimation duration='very-slow' animation='slide-up' className='text'>
                                         "你的微笑
                                         <br />
                                         是我每天的動力
@@ -301,55 +312,61 @@ function App() {
                                         讓我勇敢追求
                                         <br />
                                         每一個夢想"
-                                    </div>
+                                    </ScrollAnimation>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className='page-4'>
                         <div className='main-photos'>
-                            <div className='gradient-image-container'>
-                                <img src={photo4} alt='photo4' />
-                            </div>
+                            <ScrollAnimation rootMargin='-200px 0px' animation='fade' className='gradient-image-container'>
+                                <LazyImage src={photo4} alt='photo4' />
+                            </ScrollAnimation>
                         </div>
                         <div className='photo-text'>
-                            此刻起， 我們攜手踏上嶄新的旅程
-                            <br />
-                            無論順境或逆境
-                            <br />
-                            歡樂或憂傷
-                            <br />
-                            我都願與你一起承擔
-                            <br />
-                            一同前行
+                            <ScrollAnimation delay={500} animation='fade'>
+                                此刻起， 走向屬於我們的嶄新未來
+                            </ScrollAnimation>
+                            <ScrollAnimation delay={900} animation='fade'>
+                                無論順境或逆境
+                            </ScrollAnimation>
+                            <ScrollAnimation delay={1300} animation='fade'>
+                                歡樂或憂傷
+                            </ScrollAnimation>
+                            <ScrollAnimation delay={1700} animation='fade'>
+                                我都願與你一起承擔
+                            </ScrollAnimation>
+                            <ScrollAnimation delay={2100} animation='fade'>
+                                一同前行
+                            </ScrollAnimation>
                         </div>
-                        <div className='gif'>
-                            <img src={run} alt='run' />
-                        </div>
+                        <ScrollAnimation delay={2100} className='gif'>
+                            <LazyImage src={run} alt='run' />
+                        </ScrollAnimation>
                     </div>
                     <div className='page-5'>
                         <div className='main-photos'>
                             <div className='rect'></div>
-                            <div className='text'>
+                            <ScrollAnimation duration='slow' delay={2700} animation='scale-fade' className='text'>
                                 <p>在這浪漫的天堂</p>
                                 <p>我鼓起勇氣</p>
                                 <p>向你許下</p>
                                 <p>最美的承諾</p>
-                            </div>
-                            <div className='main-photo1'>
+                            </ScrollAnimation>
+                            <ScrollAnimation duration='slow' delay={2500} rootMargin='150px 0px' animation='scale-fade' className='main-photo1'>
                                 <img src={photo6} alt='main-photo1' />
-                            </div>
-                            <div className='main-photo2'>
+                            </ScrollAnimation>
+                            <ScrollAnimation duration='slow' rootMargin='250px 0px' delay={2700} animation='scale-fade' className='main-photo2'>
                                 <img src={photo5} alt='main-photo2' />
-                            </div>
+                            </ScrollAnimation>
                         </div>
-                        <div className='photo-text'>
+                        <ScrollAnimation duration='very-slow' rootMargin='350px 0px' delay={3000} animation='fade' className='photo-text'>
                             She said yes !
                             <br /> filling my heart with joy and sealing our love for eternity.
                             <br />
                             <br />
                             在這浪漫的時光，永不分離
-                        </div>
+                        </ScrollAnimation>
                         <div className='gray-line'>
                             <div></div>
                         </div>
@@ -358,13 +375,15 @@ function App() {
                     </div>
                     <div className='page-6'>
                         <div className='main-photo'>
-                            <img src={photo7} alt='main-photo1' />
+                            <LazyImage src={photo7} alt='main-photo1' />
                         </div>
-                        <div className='photo-text1'>遇見你之後，我開始熱愛生活，期盼餘生</div>
-                        <div className='photo-text2'>初見傾心，再見傾情，此生與你共度時光。</div>
-                        <div className='love'>
-                            <img src={love} alt='love' />
-                        </div>
+                        <ScrollAnimation className='photo-text1'>遇見你之後，我開始熱愛生活，期盼餘生</ScrollAnimation>
+                        <ScrollAnimation duration='very-slow' className='photo-text2'>
+                            初見傾心，再見傾情，此生與你共度時光。
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={1000} className='love'>
+                            <LazyImage src={love} alt='love' />
+                        </ScrollAnimation>
                     </div>
                     <div className='page-7'>
                         <div className='title-text'>
@@ -377,13 +396,15 @@ function App() {
                         </div>
                         <div className='main-photo'>
                             <div className='img-flex'>
-                                <img src={photo8} alt='main-photo1' />
-                                <div className='count'>
+                                <ScrollAnimation rootMargin='-200px 0px' animation='slide-down'>
+                                    <LazyImage src={photo8} alt='main-photo1' />
+                                </ScrollAnimation>
+                                <ScrollAnimation rootMargin='-180px 0px' delay={700} animation='slide-left' className='count'>
                                     <CountdownTimer targetDate={targetDate} targetHour={targetHour} />
-                                </div>
-                                <div className='calendar'>
+                                </ScrollAnimation>
+                                <ScrollAnimation rootMargin='-150px 0px' delay={1000} duration={1} animation='slide-up' className='calendar'>
                                     <Calendar month={0} year={2025} highlightDate={11} />
-                                </div>
+                                </ScrollAnimation>
                             </div>
                         </div>
                     </div>
@@ -396,15 +417,19 @@ function App() {
                             </div>
                         </div>
                         <div className='photos-container'>
-                            <img src={photo10} alt='wedding photo' />
-                            <img src={photo9} alt='wedding photo' />
+                            <ScrollAnimation rootMargin='-100px 0px' animation='slide-right'>
+                                <LazyImage src={photo10} alt='wedding photo' />
+                            </ScrollAnimation>
+                            <ScrollAnimation rootMargin='-100px 0px' animation='slide-left'>
+                                <LazyImage src={photo9} alt='wedding photo' />
+                            </ScrollAnimation>
                         </div>
                         <div className='photo-text'>
                             <p>3F 水景廳</p>
                             <p>鄒陳府喜宴</p>
                         </div>
 
-                        <div className='location-container'>
+                        <ScrollAnimation rootMargin='-100px 0px' animation='scale' className='location-container'>
                             <div className='map-container'>
                                 <iframe
                                     src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.6763112590465!2d120.15287911089962!3d22.998927417123348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346dd9b680e0fcdb%3A0xbbd8ca575991685a!2z56aP54i-5pGp5rKZ6YGK6ImH6YWS5bqX!5e0!3m2!1szh-TW!2stw!4v1730126785393!5m2!1szh-TW!2stw'
@@ -413,7 +438,7 @@ function App() {
                                     referrerPolicy='no-referrer-when-downgrade'
                                 ></iframe>
                             </div>
-                        </div>
+                        </ScrollAnimation>
                         <div className='park'>
                             <div className='park-text'>
                                 <div className='park-text1'>停車資訊</div>
@@ -421,31 +446,43 @@ function App() {
                                     酒店提供戶外及地下停車場，入住及用餐之旅客可享免費停車，全日24小時開放。請隨身攜帶貴重物品，酒店不負責停車場內停放之車輛及財物損失。
                                 </div>
                             </div>
-                            <div className='photos-container'>
-                                <img src={park} alt='park' />
-                            </div>
+                            <ScrollAnimation rootMargin='-100px 0px' animation='scale' className='photos-container'>
+                                <LazyImage src={park} alt='park' />
+                            </ScrollAnimation>
                         </div>
                     </div>
                     <div className='page-9'>
-                        <div className='title'>We're married...</div>
+                        <ScrollAnimation rootMargin='-100px 0px' delay={1000} animation='slide-left' duration={1} className='title'>
+                            We're married...
+                        </ScrollAnimation>
                         <div className='main-photo' id='main-photo'>
-                            <div className='gradient-image-container-soft'>
-                                <img src={photo11} alt='photo11' />
-                            </div>
+                            <ScrollAnimation rootMargin='-100px 0px' duration={1} animation='fade' className='gradient-image-container-soft'>
+                                <LazyImage src={photo11} alt='photo11' />
+                            </ScrollAnimation>
                         </div>
                         <div className='last-text'>
-                            這是一場人生為數不多的相聚
-                            <br />
-                            是千里迢迢地奔赴
-                            <br />
-                            是不計得失的支持
-                            <br />
-                            願所愛皆所得 所想皆所願
-                            <br />
-                            感謝您/不遠萬里/為我們祝福
+                            <ScrollAnimation delay={500} animation='fade'>
+                                這是一場人生中少有的相聚
+                            </ScrollAnimation>
+                            <ScrollAnimation delay={900} animation='fade'>
+                                是千里迢迢地奔赴
+                            </ScrollAnimation>
+                            <ScrollAnimation delay={1300} animation='fade'>
+                                是不計得失的支持
+                            </ScrollAnimation>
+                            <ScrollAnimation delay={1700} animation='fade'>
+                                願所愛皆所得 所想皆所願
+                            </ScrollAnimation>
+                            <ScrollAnimation delay={2100} animation='fade'>
+                                感謝您/不遠萬里/為我們祝福
+                            </ScrollAnimation>
                         </div>
-                        <div className='see'>婚禮見 !</div>
-                        <div className='thx'>- Thanks -</div>
+                        <ScrollAnimation delay={2500} animation='fade' className='see'>
+                            婚禮見 !
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={3000} className='thx'>
+                            - Thanks -
+                        </ScrollAnimation>
                     </div>
                 </div>
             )}

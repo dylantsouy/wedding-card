@@ -1,9 +1,4 @@
 @font-face {
-    font-family: 'NaikaiFontName';
-    src: url('@fonts/SentyMARUKO.ttf') format('truetype');
-    font-display: swap;
-}
-@font-face {
     font-family: 'JasonHandwriting3';
     src: url('@fonts/JasonHandwriting3.ttf') format('truetype');
     font-display: swap;
@@ -25,12 +20,24 @@ img {
 }
 html {
     background-color: #f7f8f9;
+    scroll-behavior: smooth;
     width: 100%;
 }
 body {
-    font-family: 'NaikaiFontName', sans-serif;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch; // 為 iOS 提供平滑滾動
+    font-family: 'GongFan', sans-serif;
     margin: 0;
     width: 100%;
+    &::-webkit-scrollbar {
+        width: 0px;
+    }
+    scrollbar-width: none;
+}
+@media (hover: none) and (pointer: coarse) {
+    body {
+        touch-action: pan-y;
+    }
 }
 /*
  * This is for global css usage.

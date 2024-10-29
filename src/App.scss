@@ -21,6 +21,9 @@
                 bottom: 80px;
                 color: #fff;
                 font-size: 62px;
+                @media screen and (max-width: 330px) {
+                    font-size: 46px;
+                }
             }
 
             .cloud {
@@ -31,6 +34,9 @@
 
                 img {
                     width: 100px;
+                    @media screen and (max-width: 330px) {
+                        width: 60px;
+                    }
                 }
 
                 &.cloud-right {
@@ -108,11 +114,13 @@
             padding: 0 10px;
             .sentence {
                 text-align: center;
-                font-size: 12px;
+                font-size: 15px;
                 color: $gray_text;
             }
             .title {
                 color: #333;
+                font-size: 20px;
+                font-family: 'JasonHandwriting3', sans-serif;
             }
             .gif {
                 width: 62px;
@@ -135,9 +143,12 @@
             .main-photo2 {
                 display: flex;
                 width: 100%;
-                img {
+                .img {
                     width: calc(100% - 70px);
                     border-radius: 5px;
+                    @media screen and (max-width: 330px) {
+                        width: calc(100% - 50px);
+                    }
                 }
                 .text {
                     width: 70px;
@@ -146,6 +157,9 @@
                     color: $primary;
                     font-family: 'GongFan', cursive;
                     font-size: 20px;
+                    @media screen and (max-width: 330px) {
+                        width: 50px;
+                    }
 
                     .text-column {
                         writing-mode: vertical-rl;
@@ -153,6 +167,11 @@
                         white-space: nowrap;
                         line-height: 2;
                         text-align: center;
+                        margin-right: 5px;
+                        width: 100%;
+                        @media screen and (max-width: 330px) {
+                            font-size: 14px;
+                        }
                         div {
                             &:first-child {
                                 margin-bottom: 30px;
@@ -168,7 +187,7 @@
         .photo-text {
             display: flex;
             padding: 40px 10px 120px;
-            font-size: 12px;
+            font-size: 14px;
             color: $gray_text;
         }
     }
@@ -195,17 +214,37 @@
             align-items: center;
             padding: 30px 15px;
             gap: 20px;
-            .line {
-                height: 1px;
-                width: 100%;
-                background-color: #333;
-            }
+            position: relative;
+            overflow: hidden;
+        
             .date {
                 color: #333;
                 font-family: 'JasonHandwriting3', sans-serif;
                 font-size: 22px;
+                opacity: 0;
+                
+                &:first-child {
+                    transform: translateX(-50px);
+                    animation: slideInLeft 0.8s ease forwards;
+                }
+                
+                &:last-child {
+                    transform: translateX(50px);
+                    animation: slideInRight 0.8s ease forwards;
+                }
+            }
+        
+            .line {
+                height: 1px;
+                width: 100%;
+                background-color: #333;
+                transform: scaleX(0);
+                transform-origin: left;
+                animation: expandLine 1s ease forwards;
+                animation-delay: 0.3s; // 等日期滑入後再展開線條
             }
         }
+        
         .main-photos {
             margin-top: 30px;
             padding: 0 10px;
@@ -221,16 +260,24 @@
                     flex-direction: column;
                     color: $gray_text;
                     margin-left: 20px;
+                    @media screen and (max-width: 330px) {
+                        margin-left: 10px;
+                    }
                     .said {
                         width: 80px;
+                        @media screen and (max-width: 330px) {
+                            width: 60px;
+                        }
                         img {
                             width: 100%;
                         }
                     }
                     .text {
                         margin-top: 20px;
-                        font-family: 'JasonHandwriting3', sans-serif;
                         font-size: 16px;
+                        @media screen and (max-width: 330px) {
+                            font-size: 14px;
+                        }
                     }
                 }
                 .img-area {
@@ -257,8 +304,14 @@
                     align-items: flex-end;
                     color: $gray_text;
                     margin-right: 20px;
+                    @media screen and (max-width: 330px) {
+                        margin-right: 10px;
+                    }
                     .said {
                         width: 80px;
+                        @media screen and (max-width: 330px) {
+                            width: 60px;
+                        }
                         img {
                             width: 100%;
                         }
@@ -266,8 +319,10 @@
                     .text {
                         text-align: end;
                         margin-top: 20px;
-                        font-family: 'JasonHandwriting3', sans-serif;
                         font-size: 16px;
+                        @media screen and (max-width: 330px) {
+                            font-size: 14px;
+                        }
                     }
                 }
                 img {
@@ -314,10 +369,11 @@
         }
         .photo-text {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
             padding: 20px 10px;
-            font-size: 14px;
+            font-size: 1ˊpx;
             color: $gray_text;
         }
         .gif {
@@ -563,8 +619,8 @@
         }
         .last-text {
             margin-top: 50px;
-            flex-direction: column;
             display: flex;
+            flex-direction: column;
             color: #747373;
             p {
                 font-size: 20px;
@@ -663,5 +719,25 @@
     }
     100% {
         transform: translateY(-20px) scale(1.2);
+    }
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes expandLine {
+    to {
+        transform: scaleX(1);
     }
 }
