@@ -86,6 +86,72 @@
                 }
             }
         }
+        .mouse-area {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            .mouse-scroll {
+                opacity: 0;
+                animation: fadeIn 1s ease forwards;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .text{
+                    margin-bottom: 10px;
+                    color: $gray_text;
+                }
+                span {
+                    display: block;
+                    width: 5px;
+                    height: 5px;
+                    transform: rotate(45deg);
+                    border-right: 2px solid #bbb;
+                    border-bottom: 2px solid #bbb;
+                    margin: 0 0 3px 5px;
+                }
+            
+                .mouse {
+                    height: 21px;
+                    width: 14px;
+                    border-radius: 10px;
+                    border: 2px solid #bbb;
+                    top: 170px;
+                }
+                .main{
+                    margin-right: 5px;
+                }
+            
+                .down-arrow-1 {
+                    margin-top: 6px;
+                    animation: mouse-scroll 1s infinite;
+                    animation-delay: 0.1s;
+                    animation-direction: alternate;
+                }
+            
+                .down-arrow-2 {
+                    animation: mouse-scroll 1s infinite;
+                    animation-delay: 0.2s;
+                    animation-direction: alternate;
+                }
+            
+                .down-arrow-3 {
+                    animation: mouse-scroll 1s infinite;
+                    animation-delay: 0.3s;
+                    animation-direction: alternate;
+                }
+            
+                .mouse-in {
+                    height: 5px;
+                    width: 2px;
+                    display: block;
+                    margin: 5px auto;
+                    background: #bbb;
+                    position: relative;
+                    animation: animated-mouse 1.2s ease infinite;
+                }
+            }
+        }
     }
     .page-2 {
         .title-text {
@@ -216,24 +282,24 @@
             gap: 20px;
             position: relative;
             overflow: hidden;
-        
+
             .date {
                 color: #333;
                 font-family: 'JasonHandwriting3', sans-serif;
                 font-size: 22px;
                 opacity: 0;
-                
+
                 &:first-child {
                     transform: translateX(-50px);
                     animation: slideInLeft 0.8s ease forwards;
                 }
-                
+
                 &:last-child {
                     transform: translateX(50px);
                     animation: slideInRight 0.8s ease forwards;
                 }
             }
-        
+
             .line {
                 height: 1px;
                 width: 100%;
@@ -244,7 +310,7 @@
                 animation-delay: 0.3s; // 等日期滑入後再展開線條
             }
         }
-        
+
         .main-photos {
             margin-top: 30px;
             padding: 0 10px;
@@ -516,8 +582,7 @@
                 }
                 .count {
                     right: 10%;
-                    top: 50%;
-                    transform: translateY(-50%);
+                    top: 20%;
                     position: absolute;
                     display: flex;
                     justify-content: center;
@@ -526,16 +591,16 @@
 
                 .calendar {
                     position: absolute;
-                    bottom: -10%;
-                    left: 40%;
-                    transform: translateX(-50%);
+                    bottom: -20%;
+                    left: 10%;
+                    margin: auto;
                     z-index: 2;
                 }
             }
         }
     }
     .page-8 {
-        margin-top: 100px;
+        margin-top: 150px;
         .title-text {
             padding: 50px 20px 30px;
             .title-text1 {
@@ -563,8 +628,8 @@
         flex-direction: column;
 
         .photos-container {
-        padding: 10px;
-        img {
+            padding: 10px;
+            img {
                 border-radius: 5px;
             }
         }
@@ -626,7 +691,7 @@
                 font-size: 20px;
                 margin-left: 20px;
             }
-            .text{
+            .text {
                 margin-left: 20px;
                 font-size: 14px;
             }
@@ -641,7 +706,7 @@
         }
     }
     .page-9 {
-        .title{
+        .title {
             padding: 0 20px;
             margin-top: 60px;
             font-family: 'GongFan', cursive;
@@ -683,28 +748,70 @@
                 background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 30%, rgba(255, 255, 255, 0) 100%);
             }
         }
-        .last-text{
+        .last-text {
             text-align: center;
             margin: 20px 0 10px;
             color: $gray_text;
             font-size: 14px;
         }
-        .see{
+        .see {
             text-align: center;
             margin-bottom: 20px;
             color: $gray_text;
             font-size: 16px;
         }
-        .thx{
+        .thx {
             font-family: 'GongFan', cursive;
             display: flex;
             justify-content: center;
             font-size: 32px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .design{
+            font-family: 'GongFan', cursive;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: 15px;
+            padding: 0 30px;
+        }
+        .groom{
+            width: 18px;
+            margin-left: 10px;
+            transform: translateY(-2px);
         }
     }
 }
+@keyframes animated-mouse {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
+@keyframes mouse-scroll {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 @keyframes up-down1 {
     0% {
         transform: translateY(0);

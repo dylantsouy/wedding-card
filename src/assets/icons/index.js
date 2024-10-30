@@ -1,3 +1,5 @@
-import Chat from './chat.svg?react'
+import Chat from './chat.svg?react';
+import Stop from './stop.svg?react';
+import Play from './play.svg?react';
 
-export { Chat };
+export { Chat, Stop, Play };

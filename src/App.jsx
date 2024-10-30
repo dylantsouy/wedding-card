@@ -14,6 +14,7 @@ import photo10 from '@/assets/photo10.png';
 import photo11 from '@/assets/photo11.png';
 import park from '@/assets/park.png';
 import love from '@/assets/love.png';
+import groom from '@/assets/groom.png';
 import welcome from '@/assets/welcome.png';
 import cloud from '@/assets/cloud.png';
 import about from '@/assets/about.png';
@@ -30,15 +31,21 @@ import CountdownTimer from './components/CountdownTimer';
 import Calendar from './components/Calendar';
 import { LazyImage } from './components/LazyImage';
 import { ScrollAnimation } from './components/ScrollAnimation';
-import { useScrollBehavior } from './hooks/useScrollBehavior';
+import { useDelayedAutoScroll } from './hooks/useDelayedAutoScroll';
 
 function App() {
+    useDelayedAutoScroll();
     const targetDate = '2025-01-11';
     const targetHour = 12;
     const [isLoading, setIsLoading] = useState(true);
     const [loadingStatus, setLoadingStatus] = useState({
         images: false,
     });
+    const criticalImages = [
+        photo1, 
+        welcome,
+        cloud,
+    ];
     const observerRef = useRef(null);
 
     useEffect(() => {
@@ -112,18 +119,17 @@ function App() {
 
     useEffect(() => {
         const loadResources = async () => {
-            const imageUrls = [hug, run, photo1, photo2, photo3, photo4, photo5, photo6, photo7, welcome, cloud, about, sheSaid, heSaid, he, she];
-            const loadImages = async () => {
+            const loadCriticalImages = async () => {
                 try {
                     await Promise.all(
-                        imageUrls.map(
+                        criticalImages.map(
                             (url) =>
                                 new Promise((resolve) => {
                                     const img = new Image();
                                     img.src = url;
                                     img.onload = resolve;
                                     img.onerror = () => {
-                                        console.warn(`Image failed to load: ${url}`);
+                                        console.warn(`Critical image failed to load: ${url}`);
                                         resolve();
                                     };
                                 }),
@@ -136,16 +142,19 @@ function App() {
             };
 
             const minLoadingTime = new Promise((resolve) => setTimeout(resolve, 0));
-            const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Loading timed out')), 8000));
+            const timeoutPromise = new Promise((_, reject) => 
+                setTimeout(() => reject(new Error('Loading timed out')), 6000)
+            );
 
             Promise.race([
                 (async () => {
-                    await Promise.all([loadImages(), minLoadingTime]);
+                    await Promise.all([loadCriticalImages(), minLoadingTime]);
                 })(),
                 timeoutPromise,
             ])
                 .then(() => setIsLoading(false))
                 .catch((error) => {
+                    console.warn('Loading terminated early:', error);
                     setIsLoading(false);
                 });
         };
@@ -157,15 +166,15 @@ function App() {
             setLoadingStatus({ images: false });
         };
     }, []);
-    useScrollBehavior();
+
     return (
         <>
             {isLoading ? (
                 <div className='loader-overlay'>
                     <Loader />
                     <div className='loading-status'>
-                        {loadingStatus.fonts && !loadingStatus.images && <div>正在載入圖片，請稍候...</div>}
-                        {loadingStatus.fonts && loadingStatus.images && <div>馬上就好...</div>}
+                        {!loadingStatus.images && <div>正在載入圖片，請稍候...</div>}
+                        {loadingStatus.images && <div>馬上就好...</div>}
                     </div>
                 </div>
             ) : (
@@ -189,6 +198,19 @@ function App() {
                             <p>緣分讓我們相遇，愛情讓我們相守</p>
                             <div className='gray-line'>
                                 <div></div>
+                            </div>
+                        </ScrollAnimation>
+                        <ScrollAnimation animation='fade' delay={1500} className='mouse-area'>
+                            <div className='mouse-scroll'>
+                                <div className='text'>往下滑</div>
+                                <div className='mouse'>
+                                    <div className='mouse-in'></div>
+                                </div>
+                                <div className='main'>
+                                    <span className='down-arrow-1'></span>
+                                    <span className='down-arrow-2'></span>
+                                    <span className='down-arrow-3'></span>
+                                </div>
                             </div>
                         </ScrollAnimation>
                     </div>
@@ -238,7 +260,7 @@ function App() {
                                 </ScrollAnimation>
                             </div>
                         </div>
-                        <ScrollAnimation delay={1300} rootMargin='100px 0px' animation='slide-left' className='photo-text'>
+                        <ScrollAnimation delay={1300} rootMargin='200px 0px' animation='slide-left' className='photo-text'>
                             一段誓言，象徵著我們共同的未來與夢想 <br /> 彼此的陪伴，共享每一個平凡而美好的日子 <br /> 從今我替你挽起長裙，從此你的秋衣由我打理 <br />{' '}
                             願一生相伴，不負時光，珍惜彼此的每一次擁抱與微笑
                         </ScrollAnimation>
@@ -399,7 +421,7 @@ function App() {
                                 <ScrollAnimation rootMargin='-200px 0px' animation='slide-down'>
                                     <LazyImage src={photo8} alt='main-photo1' />
                                 </ScrollAnimation>
-                                <ScrollAnimation rootMargin='-180px 0px' delay={700} animation='slide-left' className='count'>
+                                <ScrollAnimation rootMargin='-180px 0px' delay={1000} animation='slide-right' className='count'>
                                     <CountdownTimer targetDate={targetDate} targetHour={targetHour} />
                                 </ScrollAnimation>
                                 <ScrollAnimation rootMargin='-150px 0px' delay={1000} duration={1} animation='slide-up' className='calendar'>
@@ -412,7 +434,7 @@ function App() {
                         <div className='title-text'>
                             <div className='title-text1'>婚禮地點</div>
                             <div className='title-text2'>
-                                台南福爾摩沙遊艇酒店
+                                台南福爾摩沙酒店
                                 <br />
                             </div>
                         </div>
@@ -474,7 +496,7 @@ function App() {
                                 願所愛皆所得 所想皆所願
                             </ScrollAnimation>
                             <ScrollAnimation delay={2100} animation='fade'>
-                                感謝您/不遠萬里/為我們祝福
+                                感謝您/不遠萬里/向我們獻上祝福
                             </ScrollAnimation>
                         </div>
                         <ScrollAnimation delay={2500} animation='fade' className='see'>
@@ -482,6 +504,9 @@ function App() {
                         </ScrollAnimation>
                         <ScrollAnimation delay={3000} className='thx'>
                             - Thanks -
+                        </ScrollAnimation>
+                        <ScrollAnimation delay={3200} className='design'>
+                            網頁製作: 富顏<LazyImage className="groom" src={groom} alt="groom"></LazyImage> 
                         </ScrollAnimation>
                     </div>
                 </div>
