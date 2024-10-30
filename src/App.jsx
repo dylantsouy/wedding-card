@@ -31,10 +31,8 @@ import CountdownTimer from './components/CountdownTimer';
 import Calendar from './components/Calendar';
 import { LazyImage } from './components/LazyImage';
 import { ScrollAnimation } from './components/ScrollAnimation';
-import { useDelayedAutoScroll } from './hooks/useDelayedAutoScroll';
 
 function App() {
-    useDelayedAutoScroll();
     const targetDate = '2025-01-11';
     const targetHour = 12;
     const [isLoading, setIsLoading] = useState(true);
@@ -173,8 +171,8 @@ function App() {
                 <div className='loader-overlay'>
                     <Loader />
                     <div className='loading-status'>
-                        {!loadingStatus.images && <div>正在載入圖片，請稍候...</div>}
-                        {loadingStatus.images && <div>馬上就好...</div>}
+                        {!loadingStatus.images && <div className='GongFan'>正在載入圖片，請稍候...</div>}
+                        {loadingStatus.images && <div className='GongFan'>馬上就好...</div>}
                     </div>
                 </div>
             ) : (
@@ -190,11 +188,11 @@ function App() {
                             <div className='cloud cloud-left'>
                                 <img src={cloud} alt='cloud' />
                             </div>
-                            <div className='marry'>
+                            <div className='marry JasonHandwriting3'>
                                 <BounceText text='我們結婚啦!' />
                             </div>
                         </div>
-                        <ScrollAnimation animation='fade' delay={1500} className='photo-text'>
+                        <ScrollAnimation animation='fade' delay={1500} className='photo-text JasonHandwriting3'>
                             <p>緣分讓我們相遇，愛情讓我們相守</p>
                             <div className='gray-line'>
                                 <div></div>
@@ -202,7 +200,7 @@ function App() {
                         </ScrollAnimation>
                         <ScrollAnimation animation='fade' delay={1500} className='mouse-area'>
                             <div className='mouse-scroll'>
-                                <div className='text'>往下滑</div>
+                                <div className='text GongFan'>往下滑</div>
                                 <div className='mouse'>
                                     <div className='mouse-in'></div>
                                 </div>
@@ -216,14 +214,14 @@ function App() {
                     </div>
                     <div className='page-2'>
                         <div className='title-text'>
-                            <div className='title-text1'>婚禮邀請</div>
+                            <div className='title-text1 GongFan'>婚禮邀請</div>
                             <div className='title-text2'>
                                 <LazyImage src={welcome} alt='welcome' />
                             </div>
                         </div>
                         <div className='sentences'>
-                            <div className='title'>「婚禮」</div>
-                            <div animation='slide-up' rootMargin='-280px 0px' className='sentence'>
+                            <div className='title JasonHandwriting3'>「婚禮」</div>
+                            <div animation='slide-up' rootMargin='-280px 0px' className='sentence GongFan'>
                                 <br />
                                 在人生旅途中
                                 <br />
@@ -252,7 +250,7 @@ function App() {
                                 <ScrollAnimation className='img' duration={1} delay={700} animation='slide-right'>
                                     <LazyImage src={photo3} alt='main-photo1' />
                                 </ScrollAnimation>
-                                <ScrollAnimation duration={1} delay={1000} animation='slide-right' className='text'>
+                                <ScrollAnimation duration={1} delay={1000} animation='slide-right' className='text GongFan'>
                                     <div className='text-column'>
                                         <div>滿心期待藏於心底</div>
                                         <div>等著與你相逢之時</div>
@@ -260,19 +258,19 @@ function App() {
                                 </ScrollAnimation>
                             </div>
                         </div>
-                        <ScrollAnimation delay={1300} rootMargin='200px 0px' animation='slide-left' className='photo-text'>
+                        <ScrollAnimation delay={1300} rootMargin='200px 0px' animation='slide-left' className='photo-text GongFan'>
                             一段誓言，象徵著我們共同的未來與夢想 <br /> 彼此的陪伴，共享每一個平凡而美好的日子 <br /> 從今我替你挽起長裙，從此你的秋衣由我打理 <br />{' '}
                             願一生相伴，不負時光，珍惜彼此的每一次擁抱與微笑
                         </ScrollAnimation>
                     </div>
                     <div className='page-3'>
                         <div className='title-text'>
-                            <div className='title-text1'>- 關於我們 -</div>
+                            <div className='title-text1 JasonHandwriting3'>- 關於我們 -</div>
                             <div className='title-text2'>
                                 <LazyImage src={about} alt='about' />
                             </div>
                         </div>
-                        <div className='date-bar'>
+                        <div className='date-bar JasonHandwriting3'>
                             <div className='date'>2019.04.20</div>
                             <div className='line'></div>
                             <div className='date'>2025.01.11</div>
@@ -284,7 +282,7 @@ function App() {
                                     <div className='said'>
                                         <LazyImage src={sheSaid} alt='sheSaid' />
                                     </div>
-                                    <ScrollAnimation duration='very-slow' animation='slide-up' className='text'>
+                                    <ScrollAnimation duration='very-slow' animation='slide-up' className='text GongFan'>
                                         "每當我回想起
                                         <br />
                                         我們的旅程
@@ -326,7 +324,7 @@ function App() {
                                     <div className='said'>
                                         <LazyImage src={heSaid} alt='heSaid' />
                                     </div>
-                                    <ScrollAnimation duration='very-slow' animation='slide-up' className='text'>
+                                    <ScrollAnimation duration='very-slow' animation='slide-up' className='text GongFan'>
                                         "你的微笑
                                         <br />
                                         是我每天的動力
@@ -345,7 +343,7 @@ function App() {
                                 <LazyImage src={photo4} alt='photo4' />
                             </ScrollAnimation>
                         </div>
-                        <div className='photo-text'>
+                        <div className='photo-text GongFan'>
                             <ScrollAnimation delay={500} animation='fade'>
                                 此刻起， 走向屬於我們的嶄新未來
                             </ScrollAnimation>
@@ -369,7 +367,7 @@ function App() {
                     <div className='page-5'>
                         <div className='main-photos'>
                             <div className='rect'></div>
-                            <ScrollAnimation duration='slow' delay={2700} animation='scale-fade' className='text'>
+                            <ScrollAnimation duration='slow' delay={2700} animation='scale-fade' className='text GongFan'>
                                 <p>在這浪漫的天堂</p>
                                 <p>我鼓起勇氣</p>
                                 <p>向你許下</p>
@@ -382,7 +380,7 @@ function App() {
                                 <img src={photo5} alt='main-photo2' />
                             </ScrollAnimation>
                         </div>
-                        <ScrollAnimation duration='very-slow' rootMargin='350px 0px' delay={3000} animation='fade' className='photo-text'>
+                        <ScrollAnimation duration='very-slow' rootMargin='350px 0px' delay={3000} animation='fade' className='photo-text GongFan'>
                             She said yes !
                             <br /> filling my heart with joy and sealing our love for eternity.
                             <br />
@@ -392,15 +390,15 @@ function App() {
                         <div className='gray-line'>
                             <div></div>
                         </div>
-                        <div className='shi'>囍</div>
+                        <div className='shi GongFan'>囍</div>
                         <div className='line'>/</div>
                     </div>
                     <div className='page-6'>
                         <div className='main-photo'>
                             <LazyImage src={photo7} alt='main-photo1' />
                         </div>
-                        <ScrollAnimation className='photo-text1'>遇見你之後，我開始熱愛生活，期盼餘生</ScrollAnimation>
-                        <ScrollAnimation duration='very-slow' className='photo-text2'>
+                        <ScrollAnimation className='photo-text1 GongFan'>遇見你之後，我開始熱愛生活，期盼餘生</ScrollAnimation>
+                        <ScrollAnimation duration='very-slow' className='photo-text2 GongFan'>
                             初見傾心，再見傾情，此生與你共度時光。
                         </ScrollAnimation>
                         <ScrollAnimation delay={1000} className='love'>
@@ -409,8 +407,8 @@ function App() {
                     </div>
                     <div className='page-7'>
                         <div className='title-text'>
-                            <div className='title-text1'>婚禮時間</div>
-                            <div className='title-text2'>
+                            <div className='title-text1 GongFan'>婚禮時間</div>
+                            <div className='title-text2 GongFan'>
                                 2025年1月11日 星期六
                                 <br />
                                 午宴 12:00 入場
@@ -421,10 +419,10 @@ function App() {
                                 <ScrollAnimation rootMargin='-200px 0px' animation='slide-down'>
                                     <LazyImage src={photo8} alt='main-photo1' />
                                 </ScrollAnimation>
-                                <ScrollAnimation rootMargin='-180px 0px' delay={1000} animation='slide-right' className='count'>
+                                <ScrollAnimation rootMargin='-180px 0px' delay={1000} animation='slide-right' className='count GongFan'>
                                     <CountdownTimer targetDate={targetDate} targetHour={targetHour} />
                                 </ScrollAnimation>
-                                <ScrollAnimation rootMargin='-150px 0px' delay={1000} duration={1} animation='slide-up' className='calendar'>
+                                <ScrollAnimation rootMargin='-150px 0px' delay={1000} duration={1} animation='slide-up' className='calendar JasonHandwriting3'>
                                     <Calendar month={0} year={2025} highlightDate={11} />
                                 </ScrollAnimation>
                             </div>
@@ -432,8 +430,8 @@ function App() {
                     </div>
                     <div className='page-8'>
                         <div className='title-text'>
-                            <div className='title-text1'>婚禮地點</div>
-                            <div className='title-text2'>
+                            <div className='title-text1 GongFan'>婚禮地點</div>
+                            <div className='title-text2 GongFan'>
                                 台南福爾摩沙酒店
                                 <br />
                             </div>
@@ -446,7 +444,7 @@ function App() {
                                 <LazyImage src={photo9} alt='wedding photo' />
                             </ScrollAnimation>
                         </div>
-                        <div className='photo-text'>
+                        <div className='photo-text JasonHandwriting3'>
                             <p>3F 水景廳</p>
                             <p>鄒陳府喜宴</p>
                         </div>
@@ -463,8 +461,8 @@ function App() {
                         </ScrollAnimation>
                         <div className='park'>
                             <div className='park-text'>
-                                <div className='park-text1'>停車資訊</div>
-                                <div className='park-text2'>
+                                <div className='park-text1 JasonHandwriting3'>停車資訊</div>
+                                <div className='park-text2 JasonHandwriting3'>
                                     酒店提供戶外及地下停車場，入住及用餐之旅客可享免費停車，全日24小時開放。請隨身攜帶貴重物品，酒店不負責停車場內停放之車輛及財物損失。
                                 </div>
                             </div>
@@ -474,7 +472,7 @@ function App() {
                         </div>
                     </div>
                     <div className='page-9'>
-                        <ScrollAnimation rootMargin='-100px 0px' delay={1000} animation='slide-left' duration={1} className='title'>
+                        <ScrollAnimation rootMargin='-100px 0px' delay={1000} animation='slide-left' duration={1} className='title GongFan'>
                             We're married...
                         </ScrollAnimation>
                         <div className='main-photo' id='main-photo'>
@@ -482,7 +480,7 @@ function App() {
                                 <LazyImage src={photo11} alt='photo11' />
                             </ScrollAnimation>
                         </div>
-                        <div className='last-text'>
+                        <div className='last-text GongFan'>
                             <ScrollAnimation delay={500} animation='fade'>
                                 這是一場人生中少有的相聚
                             </ScrollAnimation>
@@ -499,14 +497,14 @@ function App() {
                                 感謝您/不遠萬里/向我們獻上祝福
                             </ScrollAnimation>
                         </div>
-                        <ScrollAnimation delay={2500} animation='fade' className='see'>
+                        <ScrollAnimation delay={2500} animation='fade' className='see GongFan'>
                             婚禮見 !
                         </ScrollAnimation>
-                        <ScrollAnimation delay={3000} className='thx'>
+                        <ScrollAnimation delay={3000} className='thx GongFan'>
                             - Thanks -
                         </ScrollAnimation>
-                        <ScrollAnimation delay={3200} className='design'>
-                            網頁製作: 富顏<LazyImage className="groom" src={groom} alt="groom"></LazyImage> 
+                        <ScrollAnimation delay={3200} className='design GongFan'>
+                            網頁建置: 富颜<LazyImage className="groom" src={groom} alt="groom"></LazyImage> 
                         </ScrollAnimation>
                     </div>
                 </div>

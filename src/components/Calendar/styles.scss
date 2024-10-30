@@ -56,13 +56,11 @@
             padding: 5px 10px 0;
             .line {
                 font-size: 20px;
-                font-family: 'JasonHandwriting3', sans-serif;
                 font-weight: 600;
                 padding: 0 7.5px;
             }
             .num {
                 font-size: 40px;
-                font-family: 'JasonHandwriting3', sans-serif;
                 font-weight: 600;
                 @media screen and (max-width: 400px) {
                   font-size: 35px;
@@ -83,7 +81,6 @@
         .weekday {
             padding: 3px;
             text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
-            font-family: 'JasonHandwriting3', sans-serif;
             font-size: 20px;
             font-weight: 600;
             @media screen and (max-width: 400px) {
@@ -102,7 +99,6 @@
         text-align: center;
 
         .day {
-            font-family: 'JasonHandwriting3', sans-serif;
             padding: 3px;
             font-size: 20px;
             font-weight: 600;

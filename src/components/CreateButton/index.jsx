@@ -6,7 +6,7 @@ export default function CreateButton(props) {
         <button
             variant={variant}
             type='button'
-            className={`CreateButton ${permission === false ? 'disabled' : ''}`}
+            className={`CreateButton  JasonHandwriting3 ${permission === false ? 'disabled' : ''}`}
             onClick={onClick}
             disabled={disabled || permission === false}
             style={{ '--color': `${color}`, '--textColor': `${textColor || '#fff'}` }}
