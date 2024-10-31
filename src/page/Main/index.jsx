@@ -20,6 +20,7 @@ import cloud from '@/assets/cloud.webp';
 import about from '@/assets/about.webp';
 import sheSaid from '@/assets/sheSaid.webp';
 import heSaid from '@/assets/heSaid.webp';
+import thx from '@/assets/thx.webp';
 import he from '@/assets/he.webp';
 import she from '@/assets/she.webp';
 import { useEffect, useRef, useState } from 'react';
@@ -480,7 +481,7 @@ export const Main = () => {
                                 <LazyImage src={photo11} alt='photo11' />
                             </ScrollAnimation>
                         </div>
-                        <ScrollAnimation delay={2800} className='design GongFan'>
+                        <ScrollAnimation delay={3000} className='design GongFan'>
                             網頁建置: 富颜<LazyImage className='groom' src={groom} alt='groom'></LazyImage>
                         </ScrollAnimation>
                         <div className='last-text GongFan'>
@@ -499,8 +500,12 @@ export const Main = () => {
                             <ScrollAnimation delay={2100} animation='fade'>
                                 感謝您/不遠萬里/向我們獻上祝福
                             </ScrollAnimation>
-                            <ScrollAnimation delay={2500} className='thx GongFan'>
+                            <ScrollAnimation delay={2500} className='last GongFan'>
                                 / 好久不見 婚禮見 /
+                            </ScrollAnimation>
+                            ......
+                            <ScrollAnimation delay={2800} className='thx GongFan'>
+                                <LazyImage src={thx} alt='thx'></LazyImage>
                             </ScrollAnimation>
                         </div>
                     </div>
