@@ -449,7 +449,7 @@ export const Main = () => {
                             <p>鄒陳府喜宴</p>
                         </div>
 
-                        <ScrollAnimation rootmargin='-100px 0px' animation='scale' className='location-container'>
+                        <div className='location-container'>
                             <div className='map-container'>
                                 <iframe
                                     src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.6763112590465!2d120.15287911089962!3d22.998927417123348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346dd9b680e0fcdb%3A0xbbd8ca575991685a!2z56aP54i-5pGp5rKZ6YGK6ImH6YWS5bqX!5e0!3m2!1szh-TW!2stw!4v1730126785393!5m2!1szh-TW!2stw'
@@ -458,7 +458,7 @@ export const Main = () => {
                                     referrerPolicy='no-referrer-when-downgrade'
                                 ></iframe>
                             </div>
-                        </ScrollAnimation>
+                        </div>
                         <div className='park'>
                             <div className='park-text'>
                                 <div className='park-text1 JasonHandwriting3'>停車資訊</div>
