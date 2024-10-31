@@ -1,0 +1,74 @@
+#toobarshow {
+    position: fixed;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    max-height: 40vh;
+    z-index: 999;
+    pointer-events: none;
+    padding: 10px 10px 0;
+
+    @media screen and (min-width: 431px) {
+        max-width: 430px;
+        margin: 0 auto;
+    }
+
+    .toolBar-bullet {
+        .bar-move {
+            .bar-b-list {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start; 
+
+                li {
+                    max-width: 80%;
+                    text-overflow: ellipsis;
+                    display: inline-block; 
+                    padding: 4px 10px;
+                    background: rgba(0, 0, 0, .15);
+                    border-radius: 30px;
+                    font-size: 12px;
+                    color: #fff;
+                    transition: all .3s;
+                    overflow: hidden;
+                    white-space: nowrap; 
+                    transform: translateX(-20px);
+                    animation: bulletEnter 0.5s ease forwards;
+
+                    &.bullet-list-enter-to {
+                        animation: bulletEnter 0.5s ease forwards;
+                    }
+
+                    &.bullet-list-leave-to {
+                        animation: bulletLeave 0.5s ease forwards;
+                    }
+                }
+            }
+        }
+    }
+}
+@keyframes bulletEnter {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bulletLeave {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+}

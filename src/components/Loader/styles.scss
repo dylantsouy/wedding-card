@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     opacity: 0.8;
-    animation: fadeInOut 1.5s ease-in-out infinite;
+    animation: fadeInOutLoader 1.5s ease-in-out infinite;
     letter-spacing: 0.1em;
     transform: translateY(70px);
 
@@ -26,7 +26,7 @@
         padding-right: 1.5em;
     }
 }
-@keyframes fadeInOut {
+@keyframes fadeInOutLoader {
     0%,
     100% {
         opacity: 0.6;
@@ -36,14 +36,6 @@
     }
 }
 
-@keyframes spin {
-    from {
-        transform: translateY(-50%) rotate(0deg);
-    }
-    to {
-        transform: translateY(-50%) rotate(360deg);
-    }
-}
 .cssload-main {
     position: absolute;
     content: '';
