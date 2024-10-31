@@ -196,15 +196,17 @@ export const Main = () => {
                         </ScrollAnimation>
                         <ScrollAnimation animation='fade' delay={1500} className='mouse-area'>
                             <div className='mouse-scroll'>
+                                <div className='mouse-item'>
+                                    <div className='mouse'>
+                                        <div className='mouse-in'></div>
+                                    </div>
+                                    <div className='main'>
+                                        <span className='down-arrow-1'></span>
+                                        <span className='down-arrow-2'></span>
+                                        <span className='down-arrow-3'></span>
+                                    </div>
+                                </div>
                                 <div className='text GongFan'>往下滑</div>
-                                <div className='mouse'>
-                                    <div className='mouse-in'></div>
-                                </div>
-                                <div className='main'>
-                                    <span className='down-arrow-1'></span>
-                                    <span className='down-arrow-2'></span>
-                                    <span className='down-arrow-3'></span>
-                                </div>
                             </div>
                         </ScrollAnimation>
                     </div>
