@@ -3,6 +3,7 @@ import './styles.scss';
 import { useEffect, useRef, useState } from 'react';
 import { db } from '@/firebase/config';
 import { Send } from '@/assets/icons';
+import love1 from '@/assets/love1.webp';
 
 export const MessageInput = () => {
     const [message, setMessage] = useState('');
@@ -18,7 +19,7 @@ export const MessageInput = () => {
             }
         };
     }, []);
-    
+
     const handleNameChange = (e) => {
         const value = e.target.value;
         if (value.length <= 10) {
@@ -28,7 +29,7 @@ export const MessageInput = () => {
 
     const handleMessageChange = (e) => {
         const value = e.target.value;
-        if (value.length <= 20) {
+        if (value.length <= 120) {
             setMessage(value);
         }
     };
@@ -73,7 +74,6 @@ export const MessageInput = () => {
                 text: '請等候審核，審核通過後將會顯示',
             });
         } catch (error) {
-        
             showNoty('error', {
                 title: '留言失敗',
                 text: '請稍後再試，或告知新郎',
@@ -98,10 +98,15 @@ export const MessageInput = () => {
                     <div className='bar-left'>
                         <input type='text' className='bar-mess1' placeholder={`輸入大名...`} value={name} onChange={handleNameChange} maxLength={10} />
                         <i className='line'></i>
-                        <input type='text' className='bar-mess2' placeholder={`留下祝福...`} value={message} onChange={handleMessageChange} maxLength={20} />
+                        <input type='text' className='bar-mess2' placeholder={`留下祝福...`} value={message} onChange={handleMessageChange} maxLength={120} />
                     </div>
                     <div className={`toolbar-close ${!name.trim() || !message.trim() || isSubmitting ? 'disabled' : ''}`} onClick={handleSubmit}>
                         <Send />
+                        {(name.trim() && message.trim() &&  !isSubmitting) && (
+                            <div className='love'>
+                                <img src={love1} alt='love' />
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

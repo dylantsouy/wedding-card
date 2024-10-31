@@ -85,7 +85,10 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            color: #c53838;
+            position: relative;
             &.disabled {
+                color: #fff;
                 opacity: 0.5;
                 cursor: not-allowed;
             }
@@ -94,9 +97,36 @@
                 width: 24px;
                 height: 24px;
             }
+            .love{
+                position: absolute;
+                top: -10px;
+                left: -7px;
+                animation: swingHeart 1s ease-in-out infinite;
+                img{
+                    width: 10px;
+                }
+            }
         }
     }
 }
+@keyframes swingHeart {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-8deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(8deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
 .message-noty {
     position: fixed;
     top: 50%;
