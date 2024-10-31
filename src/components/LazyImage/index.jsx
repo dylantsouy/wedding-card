@@ -1,43 +1,19 @@
-import { useEffect, useRef } from "react";
+import { useState } from 'react';
 
 export const LazyImage = ({ src, alt, className }) => {
-    const imgRef = useRef(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        observer.unobserve(img);
-                    }
-                });
-            },
-            {
-                rootMargin: '50px 0px',
-                threshold: 0.01
-            }
-        );
-
-        if (imgRef.current) {
-            imgRef.current.dataset.src = src;
-            observer.observe(imgRef.current);
-        }
-
-        return () => {
-            if (imgRef.current) {
-                observer.unobserve(imgRef.current);
-            }
-        };
-    }, [src]);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const transparentPlaceholder = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
     return (
         <img
-            ref={imgRef}
+            src={src}
             className={className}
             alt={alt}
-            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" // 透明佔位圖
+            style={{
+                backgroundImage: `url(${transparentPlaceholder})`,
+                opacity: isLoaded ? 1 : 0,
+            }}
+            onLoad={() => setIsLoaded(true)}
         />
     );
 };

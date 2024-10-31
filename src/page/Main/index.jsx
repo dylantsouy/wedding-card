@@ -136,7 +136,7 @@ export const Main = () => {
                 }
             };
 
-            const minLoadingTime = new Promise((resolve) => setTimeout(resolve, 0));
+            const minLoadingTime = new Promise((resolve) => setTimeout(resolve, 2000));
             const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Loading timed out')), 6000));
 
             Promise.race([

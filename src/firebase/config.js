@@ -12,9 +12,6 @@ const firebaseConfig = {
     appId: "1:602909815157:web:bf02eaa52ea8a70a88633c"
 };
 
-// 初始化 Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
 export const auth = getAuth(app);
-
-// 獲取 Realtime Database 實例
