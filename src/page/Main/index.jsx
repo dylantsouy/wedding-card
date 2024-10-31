@@ -41,8 +41,9 @@ export const Main = () => {
     const [loadingStatus, setLoadingStatus] = useState({
         images: false,
     });
-    const criticalImages = [photo1, welcome, cloud];
+    const criticalImages = [photo1, welcome, cloud, photo2, photo3, she, he, photo4];
     const observerRef = useRef(null);
+
     useEffect(() => {
         if (!isLoading) {
             observerRef.current = new IntersectionObserver(
