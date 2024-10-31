@@ -1,12 +1,10 @@
-
 #toolbarNew {
     position: fixed;
-    bottom: -1px;
+    bottom: 0;
     left: 0;
     right: 0;
     backdrop-filter: blur(10px);
-    padding: 8px;
-    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -1px 3px rgba(137, 137, 137, 0.1);
     z-index: 1000;
 
     @media screen and (min-width: 431px) {
@@ -23,9 +21,10 @@
         bottom: 0;
         z-index: 101;
         width: 100%;
-        padding: .78rem 10px;
-        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAADMCAYAAABZVHLgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RkEyRTg0MzgzOEJFMTFFOUI4QTg4MkRBMURDQ0JERUIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RkEyRTg0MzkzOEJFMTFFOUI4QTg4MkRBMURDQ0JERUIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGQTJFODQzNjM4QkUxMUU5QjhBODgyREExRENDQkRFQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGQTJFODQzNzM4QkUxMUU5QjhBODgyREExRENDQkRFQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ps+JK28AAAFtSURBVHjalFUBbsQwCItR//9l70JwgKa9bdNpQiQGAyYFxvj8xrARf9MA4p+1o0tHhuWAX+Y0qDhQHOpyOOBwj9OScnq4zjDhPWBDjYYy0U1iLMTmHexcGWcblTN2OSgpLGmgNmEshs5yHjGT6o7tJgzRYBwNHEeNmI7Mjulkdnmbp122pHGHv6CsjAlCEQ+tezYgg6+5Gh8kQ4ToPrUze/gSEPcJ/kbjE91RHv26NwozjvURFAO+CdfsxHP21E/EgTwmQR7tzTsrjsTvs7cQCVTFYhh1QTQIFvjZqKJnHNm1KdGWe+t27VwoWojWPTMgc4Jt9TLgJoY+i29CehdkfUB4U0KiXpboEOQU3FZ4L1lJ2Yn9eQv+bZhe3CPpsyCXoMIDBNyreIBr4zCi86zdgAyW530/nu8PSE4HZYlGF3aD70ePxZMK3xK1+Baknm2vsCp1+bHI+HgcIAEQ+ZU5P0AH3LXMsvg5lB8BBgDgPVSHKfVtDwAAAABJRU5ErkJggg==) 0 0 repeat-x;
-        background-size: .02667rem 4.13333rem;
+        padding: 10px 10px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAADMCAYAAABZVHLgAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RkEyRTg0MzgzOEJFMTFFOUI4QTg4MkRBMURDQ0JERUIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RkEyRTg0MzkzOEJFMTFFOUI4QTg4MkRBMURDQ0JERUIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGQTJFODQzNjM4QkUxMUU5QjhBODgyREExRENDQkRFQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpGQTJFODQzNzM4QkUxMUU5QjhBODgyREExRENDQkRFQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ps+JK28AAAFtSURBVHjalFUBbsQwCItR//9l70JwgKa9bdNpQiQGAyYFxvj8xrARf9MA4p+1o0tHhuWAX+Y0qDhQHOpyOOBwj9OScnq4zjDhPWBDjYYy0U1iLMTmHexcGWcblTN2OSgpLGmgNmEshs5yHjGT6o7tJgzRYBwNHEeNmI7Mjulkdnmbp122pHGHv6CsjAlCEQ+tezYgg6+5Gh8kQ4ToPrUze/gSEPcJ/kbjE91RHv26NwozjvURFAO+CdfsxHP21E/EgTwmQR7tzTsrjsTvs7cQCVTFYhh1QTQIFvjZqKJnHNm1KdGWe+t27VwoWojWPTMgc4Jt9TLgJoY+i29CehdkfUB4U0KiXpboEOQU3FZ4L1lJ2Yn9eQv+bZhe3CPpsyCXoMIDBNyreIBr4zCi86zdgAyW530/nu8PSE4HZYlGF3aD70ePxZMK3xK1+Baknm2vsCp1+bHI+HgcIAEQ+ZU5P0AH3LXMsvg5lB8BBgDgPVSHKfVtDwAAAABJRU5ErkJggg==)
+            0 0 repeat-x;
+        background-size: 10px 80px;
 
         .bar-left {
             flex: 1;
@@ -38,7 +37,7 @@
             background-color: rgba(0, 0, 0, 0.28);
             input {
                 color: #ccc;
-                -webkit-appearance: none;
+                appearance: none;
                 border-radius: 0.48rem;
                 padding: 0 0.21333rem;
             }
@@ -46,7 +45,7 @@
             input.bar-mess1 {
                 flex: 1;
                 border: none;
-                padding: 8px 0;
+                padding: 4px 0;
                 background: transparent;
                 font-size: 14px;
 
@@ -57,7 +56,7 @@
             input.bar-mess2 {
                 flex: 3;
                 border: none;
-                padding: 8px 0;
+                padding: 4px 0;
                 background: transparent;
                 font-size: 14px;
 
@@ -72,7 +71,7 @@
                 padding: 4px;
             }
         }
-        .line{
+        .line {
             width: 1px;
             height: 15px;
             background-color: #acacac;
@@ -97,12 +96,12 @@
                 width: 24px;
                 height: 24px;
             }
-            .love{
+            .love {
                 position: absolute;
                 top: -10px;
                 left: -7px;
                 animation: swingHeart 1s ease-in-out infinite;
-                img{
+                img {
                     width: 10px;
                 }
             }
@@ -137,25 +136,25 @@
     padding: 15px 25px;
     border-radius: 8px;
     animation: fadeInNoty 0.3s ease;
-    
+
     &.success {
-        border-left: 4px solid #4CAF50;
+        border-left: 4px solid #4caf50;
     }
-    
+
     &.error {
         border-left: 4px solid #f44336;
     }
-    
+
     .noty-content {
         text-align: center;
         color: #fff;
-        
+
         .noty-title {
             font-size: 16px;
             font-weight: bold;
             margin-bottom: 5px;
         }
-        
+
         .noty-text {
             font-size: 14px;
             opacity: 0.9;
